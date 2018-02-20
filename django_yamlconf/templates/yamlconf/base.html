@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<!--
+  -*- coding: utf-8 -*-
+  Copyright © 2018 VMware, Inc.  All rights reserved.
+  SPDX-License-Identifier: BSD-2-Clause
+-->
+
+{% load staticfiles %}
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+  <head>
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8"/>
+    <title>{{ title|escape }}</title>
+    <link href="{% static 'yamlconf/yamlconf.css' %}" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+
+    <h1>{{ title|escape }}</h1>
+
+    <hr />
+
+    <div id="contents">
+      {% block contents %}{% endblock %}
+    </div>
+
+    <hr />
+
+    <div id="footer" class="footer">
+      <a href="{% url 'django_yamlconf:index' %}">Attribute index</a>
+      <div id="yamlconf" class="yamlconf">
+      <a href="https://github.com/vmware/django-yamlconf">YAMLCONF</a>
+      </div>
+    </div>
+
+    <hr />
+  </body>
+</html>

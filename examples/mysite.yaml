@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# Copyright © 2018, VMware, Inc.  All rights reserved.
+# SPDX-License-Identifier: BSD-2-Clause
+#
+# YAMLCONF definitions for the "mysite" project
+
+SERVER_NAME: 'mysite.example.com'
+SERVER_NAME:doc: |
+   Set the server name to the host name for the service.

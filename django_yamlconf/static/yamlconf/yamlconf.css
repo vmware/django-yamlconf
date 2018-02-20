@@ -1,0 +1,26 @@
+/*
+ * -*- coding: utf-8 -*-
+ * Copyright © 2018 VMware, Inc.  All rights reserved.
+ * SPDX-License-Identifier: BSD-2-Clause
+ *
+ * Simple styling for the YAMLCONF debug page display.
+*/
+
+body {
+  background: white;
+  color: #333366;
+  padding: 0 1em;
+  margin: 0;
+  font-family: Verdana, Arial, sans-serif;
+  font-size: small;
+}
+
+.footer {
+    position: relative;
+}
+
+.yamlconf {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}

@@ -1,0 +1,31 @@
+{% extends "yamlconf/base.html" %}
+{% comment %}
+  -*- coding: utf-8 -*-
+  Copyright © 2018 VMware, Inc.  All rights reserved.
+  SPDX-License-Identifier: BSD-2-Clause
+{% endcomment %}
+
+{% block contents %}
+<div class="results">
+<table>
+<thead>
+<tr>
+  <th>Attribute</th>
+  <th>Value</th>
+</tr>
+</thead>
+<tbody>
+{% for key, info in attrs.items|dictsort:"0.lower" %}
+<tr>
+  <td valign="top">
+    <a href="{% url 'django_yamlconf:attr' key %}">{{ key|escape }}</a>
+  </td>
+  <td>
+    {% include "yamlconf/value.html" with value=info.evalue hide=info.hide %}
+  </td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+</div>
+{% endblock %}

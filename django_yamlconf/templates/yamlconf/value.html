@@ -1,0 +1,56 @@
+{% comment %}
+  -*- coding: utf-8 -*-
+  Copyright © 2018 VMware, Inc.  All rights reserved.
+  SPDX-License-Identifier: BSD-2-Clause
+{% endcomment %}
+
+{% load yamconf_tags %}
+
+<div>
+  {% if hide %}
+    <em>***** Hidden *****</em>
+  {% else %}
+    {% if value|get_type == 'list' or value|get_type == 'tuple' %}
+      {% for lvalue in value %}
+        {% if forloop.first %}
+          <ol>
+        {% endif %}
+        <li>
+          {% include "yamlconf/value.html" with value=lvalue %}
+        </li>
+        {% if forloop.last %}
+          </ol>
+        {% endif %}
+      {% empty %}
+        <em>EMPTY LIST</em>
+      {% endfor %}
+    {% elif value|get_type == 'dict' %}
+      {% for key, dvalue in value.items %}
+        {% if forloop.first %}
+          <table>
+            <thead>
+              <tr>
+                <th>Key</th>
+                <th>Value</th>
+              </tr>
+            </thead>
+            <tbody>
+        {% endif %}
+        <tr>
+        <td><tt>{{ key }}</tt></td>
+        <td>
+          {% include "yamlconf/value.html" with value=dvalue %}
+        </td>
+        </tr>
+        {% if forloop.last %}
+            </tbody>
+          </table>
+        {% endif %}
+      {% empty %}
+        <em>EMPTY DICTIONARY</em>
+      {% endfor %}
+    {% else %}
+      <tt>{{ value|escape }}</tt>
+    {% endif %}
+  {% endif %}
+</div>

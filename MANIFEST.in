@@ -1,0 +1,8 @@
+# -*- coding: utf-8 -*-
+# Copyright © 2018, VMware, Inc.  All rights reserved.
+# SPDX-License-Identifier: BSD-2-Clause
+
+# Include the README and the templates
+include README.md
+recursive-include django_yamlconf/templates *
+recursive-include django_yamlconf/static *

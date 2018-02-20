@@ -1,0 +1,76 @@
+{% extends "yamlconf/base.html" %}
+{% comment %}
+  -*- coding: utf-8 -*-
+  Copyright © 2018 VMware, Inc.  All rights reserved.
+  SPDX-License-Identifier: BSD-2-Clause
+{% endcomment %}
+
+{% load yamconf_tags %}
+
+{% block contents %}
+
+<table cellspacing=10>
+<thead>
+<tr>
+  <th></th>
+  <th>Value</th>
+  <th>Source</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td></td>
+  <td>
+    {% include "yamlconf/value.html" with value=info.value hide=info.hide %}
+  </td>
+  <td><tt>{{ info.source }}</tt></td>
+</tr>
+  {% if info.value != info.evalue %}
+  <tr>
+    <td><tt>=&gt;</tt></td>
+    <td>
+    {% include "yamlconf/value.html" with value=info.evalue hide=info.hide %}
+    </td>
+  </tr>
+  {% endif %}
+</tbody>
+</table>
+
+{% if info.doc %}
+<h2>Documentation</h2>
+
+{% for doc in info.doc %}
+<pre>
+{{ doc }}
+</pre>
+{% endfor %}
+
+{% endif %}
+
+{% if info.history %}
+<h2>Eclipsed Values</h2>
+
+<table cellspacing=10>
+<thead>
+<tr>
+   <th>Value</th>
+   <th>Source</th>
+</tr>
+</thead>
+<tbody>
+{% for rec in info.history %}
+  <tr>
+    <td>
+      {% include "yamlconf/value.html" with value=rec.0 hide=info.hide %}
+    </td>
+    <td>
+      <tt>{{ rec.1 }}</tt>
+    </td>
+  </tr>
+{% endfor %}
+</tbody>
+</table>
+{% endif %}
+</table>
+
+{% endblock %}

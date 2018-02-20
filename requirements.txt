@@ -1,0 +1,9 @@
+Django<2.0
+Jinja2
+coverage
+PyYAML
+nose
+six
+pycodestyle
+pyflakes
+pylint

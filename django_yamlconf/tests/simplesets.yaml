@@ -1,0 +1,19 @@
+# -*- coding: utf-8 -*-
+# Copyright © 2018 VMware, Inc.  All rights reserved.
+# SPDX-License-Identifier: BSD-2-Clause
+
+EXAMPLE: example
+DICT1.value: abc
+DICT2:
+   v1: value1
+DICT3:add:
+   v2: value2
+LIST1:
+  - 1
+  - 2
+LIST2:add:
+  - 2017
+LIST3:add:
+  - 2017
+LIST4:add: 2017
+SCALAR:add: 2017

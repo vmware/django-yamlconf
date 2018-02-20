@@ -1,0 +1,9 @@
+# -*- coding: utf-8 -*-
+# Copyright © 2018, VMware, Inc.  All rights reserved.
+# SPDX-License-Identifier: BSD-2-Clause
+
+Django==1.11.8
+pkg-resources==0.0.0
+pytz==2017.3
+PyYAML==3.12
+six==1.11.0
