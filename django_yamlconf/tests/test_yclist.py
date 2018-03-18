@@ -30,7 +30,7 @@ class TestYCList(YCTestCase):
         """
         if hasattr(self, "assertRegex"):
             out = StringIO()
-            django_yamlconf.list_attrs(stream=out, settings=self.settings)
+            django_yamlconf.list_attrs(settings=self.settings, stream=out)
             self.assertRegex(out.getvalue(), "EXAMPLE *value")
 
     def test_yclist_no_settings(self):
@@ -40,7 +40,7 @@ class TestYCList(YCTestCase):
         if hasattr(self, "assertLogs"):
             with self.assertLogs('', level='ERROR') as logs:
                 django_yamlconf.list_attrs(
-                    stream=StringIO(),
                     settings=MockSettings(),
+                    stream=StringIO(),
                 )
                 self.assertIn('No YAMLCONF attributes defined', logs.output[0])

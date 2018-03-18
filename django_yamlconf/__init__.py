@@ -427,7 +427,7 @@ def inject_attr(attributes, settings):
             setattr(settings, attr, value)
 
 
-def list_attrs(stream=sys.stdout, settings=None):
+def list_attrs(settings=None, stream=sys.stdout):
     """
     List the attributes loaded by YAMLCONF processing.  Additional information
     is available on these attributes via the explain routine.
