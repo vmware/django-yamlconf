@@ -46,7 +46,7 @@ settings file would then end with a call the the `load` function.
 Additional definitions could be defined after the `load` function
 to update conditional definitions, e.g., if `DEBUG` is enabled.
 
-``` python
+```python
 import django_yamlconf
 
 DATABASES = {
@@ -76,7 +76,7 @@ place containing the host name for the production database and the password
 for the example user (assuming production is using the same database name
 and username).  In this example, a random `pwgen` password is used::
 
-``` yaml
+```yaml
 DATABASES.default.PASSWORD: 'zibiemohjuD6foh0'
 DATABASES.default.HOST: 'myproject-db.eng.vmware.com'
 ```
@@ -165,7 +165,7 @@ control files, e.g., Apache configuration files, based on the attributes
 defined via YAMLCONF files.  The command scans the directory defined by
 by the attribute, e.g.,::
 
-``` yaml
+```yaml
     YAMLCONF_SYSFILES_DIR: '{BASE_DIR}/templates/sys'
 ```
 
@@ -203,7 +203,7 @@ YAMLCONF uses the "." character to identify attributes defined as part of a
 dictionary, e.g., the DATABASES attribute.  To set, e.g., the password for
 a database connection::
 
-``` yaml
+```yaml
     DATABASES.default.PASSWORD: some-secret-password
 ```
 
@@ -214,7 +214,7 @@ The dotted notation should be used to update dictionaries already defined
 in the settings file.  To add a new dictionary, a YAML dictionary definition
 should be used, e.g.,::
 
-``` yaml
+```yaml
     NEW_DICTIONARY:
         key1: value1
         key2: value2
@@ -227,7 +227,7 @@ most commonly using the base directory to define other directories.  The
 YAMLCONF allows other attributes to be referenced using the Python named
 formatting syntax, e.g.,::
 
-``` yaml
+```yaml
     LOG_DIR: "{BASE_DIR}/log"
 ```
 
@@ -235,7 +235,7 @@ Currently only attributes defined via YAML files can be used in this way.
 To disable this on a per-attribute basis, the "`:raw`" qualifier should
 be defined to modify the behaviour for attribute, e.g.,::
 
-``` yaml
+```yaml
     LOGGING.formatters.simple.format: '%(asctime)s %(levelname)s %(message)s'
     LOGGING.formatters.simple.format:raw: True
 ```
@@ -258,7 +258,7 @@ will have their values hidden in the HTML displayed.  Other, sensitive,
 values can be explicitly hidden by defining the qualifier attribute
 "`:hide`", e.g.,::
 
-``` yaml
+```yaml
     APIKEY: 'my-api-key'
     APIKEY:hide: True
 ```
@@ -269,7 +269,7 @@ For list values, the qualifier attribute "`:add`" can be used to extend
 the underlying definition, e.g., add another admin user, the following
 definition can be used::
 
-``` yaml
+```yaml
     ADMINS:add: 'someuser@vmware.com'
 ```
 
@@ -328,7 +328,7 @@ expected value for the attribute and how the value might differ on production,
 beta and development servers, e.g., documentation for the DEBUG attribute
 would be defined using the YAML::
 
-``` yaml
+```yaml
     DEBUG:doc: |
         Enable or disable debugging functionality.  On the production server
         this attribute should be set to false
@@ -362,7 +362,7 @@ methods are only used by the management commands.
 
 ### `add_attributes` Function
 
-``` python
+```python
 add_attributes(settings, attributes, source)
 ```
 
@@ -381,7 +381,7 @@ the `ycsysfiles` command.
 
 ### `defined_attributes` Function
 
-``` python
+```python
 defined_attributes(settings)
 ```
 
@@ -394,7 +394,7 @@ for the `ycsysfiles` command.
 
 ### `explain` Function
 
-``` python
+```python
 explain(name, settings, stream=sys.stdout)
 ```
 
@@ -411,7 +411,7 @@ This routine is only used by the YAMLCONF management commands.
 
 ### `list_attrs` Function
 
-``` python
+```python
 list_attrs(settings=None, stream=sys.stdout)
 ```
 Parameters:
@@ -423,7 +423,7 @@ information can be printed using the `explain` routine.
 
 ### `load` Function
 
-``` python
+```python
 load(syntax="yaml", settings=None, base_dir=None, project=None)
 ```
 
@@ -445,7 +445,7 @@ arguments are needed.
 
 ### `sysfiles` Function
 
-``` python
+```python
 sysfiles(create, no-op, settings, rootdir="", render=None)
 ```
 
@@ -469,7 +469,7 @@ Some of the current limitations for this implementation are:
 
 * Currently cannot substitute list values, e.g.,::
 
-``` yaml
+```yaml
     ADMINS:
       - jsmith
       - auser
@@ -486,8 +486,12 @@ The examples are based on the `polls` example from the
 [Django Project](https://www.djangoproject.com/) web site.  There are two
 flavors of this example:
 
-1. Under Django version 1.11
-2. Under Django version 2.0
+1. Under Django version 1.11 in the directory `examples/django-1.11`
+2. Under Django version 2.0 in the directory `examples/django-2.0`
+
+The examples for both versions of Django behaviour similarly.  However,
+the 2.0 example does not run under Apache (at the time of writing, support
+for Django 2.0 via `mod_wsgi` was not easily available).
 
 ## Django 1.11 Example
 
@@ -501,11 +505,17 @@ file used and
 
 ### Version 1.0.0
 
-* Initial release (tagged with `v1.0.0`)
+* Initial public release (tagged with `v1.0.0`)
 
 ## Contributing
 
-The `django-yamlconf` project team welcomes contributions from the community. Before you start working with `django-yamlconf`, please read our [Developer Certificate of Origin](https://cla.vmware.com/dco). All contributions to this repository must be signed as described on that page. Your signature certifies that you wrote the patch or have the right to pass it on as an open-source patch. For more detailed information, refer to [CONTRIBUTING.md](CONTRIBUTING.md).
+The `django-yamlconf` project team welcomes contributions from the
+community. Before you start working with `django-yamlconf`, please read
+our [Developer Certificate of Origin](https://cla.vmware.com/dco). All
+contributions to this repository must be signed as described on that
+page. Your signature certifies that you wrote the patch or have the right
+to pass it on as an open-source patch. For more detailed information,
+refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Authors
 

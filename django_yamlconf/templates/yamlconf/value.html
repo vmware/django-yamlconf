@@ -13,6 +13,7 @@
     {% if value|get_type == 'list' or value|get_type == 'tuple' %}
       {% for lvalue in value %}
         {% if forloop.first %}
+          <b>{{ value|length }} values:</b>
           <ol>
         {% endif %}
         <li>

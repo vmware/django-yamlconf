@@ -10,6 +10,7 @@ dist
 htmlcov
 venv
 .coverage
+.venv-distro
 .venv?
 .eggs
 *.egg-info

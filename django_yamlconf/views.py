@@ -9,7 +9,6 @@ import logging
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404
 from django.shortcuts import render_to_response
-from django.template import RequestContext
 from django_yamlconf import get_cached_attributes
 from django_yamlconf import get_attr_info
 

@@ -8,12 +8,12 @@ from __future__ import unicode_literals
 
 import importlib
 import logging
-import django_yamlconf
+import six
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
 
-import six
+import django_yamlconf
 
 logger = logging.getLogger(__name__)
 

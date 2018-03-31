@@ -12,6 +12,7 @@ MANAGE=$(ACTIVATE); mysite/manage.py
 
 all:
 	@echo "Use 'make install' to update the Apache config"
+	@echo "Use 'make init' to initial the DB and create super user"
 	@echo "Use 'make runserver' to run the example application"
 	@echo "Use 'make yclist' to see an example YAMLCONF list"
 	@echo "Use 'make ycexplain' to see an example YAMLCONF explain"
@@ -20,11 +21,15 @@ all:
 check runserver yclist:	$(VENV)
 	$(MANAGE) $@
 
+init: $(VENV)
+	$(MANAGE) migrate
+	$(MANAGE) createsuperuser
+
 install: $(VENV)
 	$(MANAGE) collectstatic
 	$(MANAGE) ycsysfiles
 
-venv $(VENV):
+$(VENV):
 	virtualenv --python=python2 $(VENV)
 	$(ACTIVATE); pip install -r requirements.txt
 

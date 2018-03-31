@@ -5,10 +5,13 @@
 # Utility Makefile to package, clean and test
 PYVER=3
 VENV=.venv$(PYVER)
+VENVDISTRO=.venv-distro
 ACTIVATE=. $(VENV)/bin/activate
 
 distro:
-	setup.py sdist
+	if [ ! -d $(VENVDISTRO) ]; then virtualenv $(VENVDISTRO); fi
+	. $(VENVDISTRO)/bin/activate && pip install six
+	. $(VENVDISTRO)/bin/activate && setup.py sdist bdist_wheel
 
 check:	$(VENV)
 	$(ACTIVATE) && setup.py test
@@ -18,9 +21,9 @@ coverage:	$(VENV)
 	$(ACTIVATE) && coverage html
 
 style-check:	$(VENV)
-	$(ACTIVATE) && pycodestyle ``find django_yamlconf -name '*.py'`
-	find django_yamlconf -name '*.py' | xargs pyflakes
-	find django_yamlconf -name '*.py' | grep -v tests | xargs pylint
+	$(ACTIVATE) && pycodestyle `find django_yamlconf -name '*.py'`
+	$(ACTIVATE) && find django_yamlconf -name '*.py' | xargs pyflakes
+	$(ACTIVATE) && find django_yamlconf -name '*.py' | grep -v tests | xargs pylint
 
 venv $(VENV):
 	virtualenv --python=python$(PYVER) $(VENV)
@@ -34,6 +37,7 @@ clean:
 	rm -rf django_yamlconf/root
 	rm -f .coverage
 	rm -rf htmlcov
+	rm -rf $(VENVDISTRO)
 	rm -rf .venv?
 	rm -rf .eggs
 	rm -rf build
