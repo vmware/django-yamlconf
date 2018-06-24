@@ -20,7 +20,7 @@ DATABASES.default.NAME: '{BASE_DIR}/db.sqlite3'
 DATABASES.default.NAME:doc: |
     The file name for the SQLITE database used for the "mysite" application.
 
-INSTALLED_APPS:add:
+INSTALLED_APPS:append:
   - 'django_yamlconf'
 INSTALLED_APPS:doc: |
   List of installed applications.  Adding django_yamlconf to support yclist,

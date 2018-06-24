@@ -24,6 +24,7 @@ class TestSimpleSets(YCTestCase):
         self.settings.DICT3 = {'v1': 'value1'}
         self.settings.LIST3 = [1, 2]
         self.settings.LIST4 = [1, 2]
+        self.settings.LIST5 = [1, 2]
         self.settings.SCALAR = 10
         django_yamlconf.load(project="simplesets", settings=self.settings)
 
@@ -75,6 +76,12 @@ class TestSimpleSets(YCTestCase):
         Append to the LIST4 attribute to gives list
         """
         self.assertEqual(self.settings.LIST4, [1, 2, 2017])
+
+    def test_prepend_list5(self):
+        """
+        Prepend to the LIST5 attribute to (defined)
+        """
+        self.assertEqual(self.settings.LIST5, [2017, 1, 2])
 
     def test_append_scalar(self):
         """

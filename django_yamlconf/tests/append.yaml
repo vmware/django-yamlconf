@@ -2,6 +2,6 @@
 # Copyright © 2018 VMware, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 
-DICT:add:
+DICT:append:
   - 1
   - 2

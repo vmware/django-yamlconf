@@ -6,14 +6,16 @@ EXAMPLE: example
 DICT1.value: abc
 DICT2:
    v1: value1
-DICT3:add:
+DICT3:append:
    v2: value2
 LIST1:
   - 1
   - 2
-LIST2:add:
+LIST2:append:
   - 2017
-LIST3:add:
+LIST3:append:
   - 2017
-LIST4:add: 2017
-SCALAR:add: 2017
+LIST4:append: 2017
+LIST5:prepend:
+  - 2017
+SCALAR:append: 2017

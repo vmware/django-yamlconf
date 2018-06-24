@@ -33,9 +33,10 @@ __all__ = [
 
 logger = logging.getLogger(__name__)
 
-_ADD_MARKER = ":add"
+_APPEND_MARKER = ":append"
 _DOC_MARKER = ":doc"
 _HIDE_MARKER = ":hide"
+_PREPEND_MARKER = ":prepend"
 _RAW_MARKER = ":raw"
 _YAMLCONF_ATTRIBUTES = "_YAMLCONF_ATTRIBUTES"
 
@@ -72,18 +73,21 @@ def add_attr_info(attributes, name, value, source="**INTERNAL**"):
     }
 
 
-def add_value(name, cur_value, value):
+def extend_value(name, cur_value, value, append=True):
     """
-    Append the "value" to an existing value.
+    Append or prepend (depending on append argument)  the "value" to an
+    existing value.
     """
     if not cur_value:
         return value
     elif isinstance(cur_value, (list, tuple)):
         result = copy.deepcopy(list(cur_value))
-        if isinstance(value, list):
+        if not isinstance(value, list):
+            value = [value]
+        if append:
             result.extend(value)
         else:
-            result.append(value)
+            result = value + result
         return result
     elif isinstance(cur_value, dict):
         result = copy.deepcopy(cur_value)
@@ -546,15 +550,29 @@ def set_attr_value(attributes, settings, filename, name, value):
         name = name[:-len(_HIDE_MARKER)]
         attr_data = get_attr_data(attributes, settings, name)
         attr_data['hide'] = True
-    elif name.endswith(_ADD_MARKER):
-        name = name[:-len(_ADD_MARKER)]
+    elif name.endswith(_APPEND_MARKER):
+        name = name[:-len(_APPEND_MARKER)]
         attr_data = get_attr_data(attributes, settings, name)
         attr_data['history'].insert(
             0,
             (copy.deepcopy(attr_data['value']), attr_data['source'])
         )
         attr_data['source'] = filename
-        attr_data['value'] = add_value(name, attr_data['value'], value)
+        attr_data['value'] = extend_value(name, attr_data['value'], value)
+    elif name.endswith(_PREPEND_MARKER):
+        name = name[:-len(_PREPEND_MARKER)]
+        attr_data = get_attr_data(attributes, settings, name)
+        attr_data['history'].insert(
+            0,
+            (copy.deepcopy(attr_data['value']), attr_data['source'])
+        )
+        attr_data['source'] = filename
+        attr_data['value'] = extend_value(
+            name,
+            attr_data['value'],
+            value,
+            append=False
+        )
     else:
         attr_data = get_attr_data(attributes, settings, name)
         attr_data['history'].insert(

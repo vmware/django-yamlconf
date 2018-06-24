@@ -263,25 +263,31 @@ values can be explicitly hidden by defining the qualifier attribute
     APIKEY:hide: True
 ```
 
-## Appending to Values
+## Extending Values
 
-For list values, the qualifier attribute "`:add`" can be used to extend
-the underlying definition, e.g., add another admin user, the following
-definition can be used::
+For list values, the qualifier attributes "`:prepend`" and "`:append`"
+can be used to extend the underlying definition, e.g., add another admin
+user, the following definition can be used::
 
 ```yaml
-    ADMINS:add: 'someuser@vmware.com'
+    ADMINS:append: 'someuser@vmware.com'
 ```
 
-The value of "`:add`" qualified attribute can be either a single value,
-as above, or a list of values.  When a list is given, the attribute is
-extend with the extra values, e.g.,::
+The value of "`:prepend`" or "`:append`" qualified attribute can be
+either a single value, as above, or a list of values.  When a list is
+given, the attribute is extend with the extra values, e.g.,::
 
 ```
-    ADMINS:add:
+    ADMINS:append:
       - 'someuser1@vmware.com'
       - 'someuser2@vmware.com'
 ```
+
+Normally, list values in the settings file are simply unordered lists.  There
+are, however, some values where the order matters, in particular, the
+"`MIDDLEWARE`" list.  A middleware that short-circuits the handling of
+requests would need to be placed at the beginning of the list.  This is the
+rationale for the "`:prepend`" functionality.
 
 ## Pre-defined Attributes
 

@@ -17,7 +17,7 @@ all:
 	@echo "Use 'make ycexplain' to see an example YAMLCONF explain"
 	@echo "Use 'make ycsysfiles' to see an example YAMLCONF sysfiles"
 
-check runserver yclist:	$(VENV)
+check runserver shell yclist:	$(VENV)
 	$(MANAGE) $@
 
 init: $(VENV)
