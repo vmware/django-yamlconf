@@ -248,8 +248,12 @@ the URL definition to your application::
 
     url(r'^yamlconf/', include('django_yamlconf.urls')),
 
-will display the YAMLCONF attributes.  An example of the page displayed
-is:
+will display the YAMLCONF attributes.  For older versions of Django, the
+`namespace` needs to be explictly defined::
+
+    url(r'^yamlconf/', include('django_yamlconf.urls', namespace='django_yamlconf')),
+
+An example of the page displayed is:
 
 ![Attributes Index Page](images/yamlconf-list.png "YAMLCONF Index Page")
 

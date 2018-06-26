@@ -12,10 +12,10 @@ Custom template filters to support display of YAMLCONF values via HTML views.
 
 from django import template
 
-REGISTER = template.Library()
+register = template.Library()
 
 
-@REGISTER.filter
+@register.filter
 def get_type(value):
     """
     Return the name of the type for a value.  This is used when displaying
