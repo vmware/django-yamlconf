@@ -4,5 +4,6 @@
 
 # Include the README and the templates
 include README.md
+include django_yamlconf/VERSION
 recursive-include django_yamlconf/templates *
 recursive-include django_yamlconf/static *

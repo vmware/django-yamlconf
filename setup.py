@@ -12,8 +12,15 @@ def readme():
         return f.read()
 
 def version():
-    import django_yamlconf
-    return django_yamlconf.VERSION
+    vers_path = path.join(
+        path.dirname(__file__),
+        "django_yamlconf",
+        "VERSION"
+    )
+    with open(vers_path, "r") as fh:
+        v_info = fh.readline()
+    return ".".join(filter(lambda x: x != '', v_info.split(" ")))
+
 
 setup(
     name='django-yamlconf',

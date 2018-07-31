@@ -40,11 +40,6 @@ _PREPEND_MARKER = ":prepend"
 _RAW_MARKER = ":raw"
 _YAMLCONF_ATTRIBUTES = "_YAMLCONF_ATTRIBUTES"
 
-V_MAJOR = 0
-V_MINOR = 3
-V_PATCH = 0
-VERSION = "{0}.{1}.{2}".format(V_MAJOR, V_MINOR, V_PATCH)
-
 
 def add_attributes(settings, attributes, source):
     """
@@ -661,3 +656,17 @@ def sysfiles(create, noop, settings, rootdir="", render=None):
                 )
     else:
         logger.error("No YAMLCONF_SYSFILES_DIR settings defined")
+
+
+def _load_version():
+    """
+    Return the version information defined in the VERSION file.
+    """
+    with open(os.path.join(os.path.dirname(__file__), "VERSION"), "r") as ver:
+        v_info = ver.readline()
+    major, minor, patch = filter(lambda x: x != '', v_info.strip().split(" "))
+    return major, minor, patch
+
+
+V_MAJOR, V_MINOR, V_PATCH = _load_version()
+VERSION = "{0}.{1}.{2}".format(V_MAJOR, V_MINOR, V_PATCH)
