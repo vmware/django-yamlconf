@@ -88,6 +88,19 @@ added to the `INSTALLED_APPS` to add these commands):
 * `ycsysfiles`: Create system control files based on attribute controlled
   template files
 
+The attributes available to the management commands can be extended using
+methods returning dictionaries of values.  The method names can be defined
+in the `settings` file or via a YAMLCONF file via the attribute
+`YAMLCONF_ATTRIBUTE_FUNCTIONS`, e.g.,
+
+```yaml
+YAMLCONF_ATTRIBUTE_FUNCTIONS:
+  - 'health_checks.ycattrs.attributes'
+```
+
+As can be seen from the example method above, these additional attibutes
+are primarily used with the `ycsysfiles` command.
+
 ### `ycexplain` Command
 
 This `ycexplain` gives information on the value defined by the set of YAML
@@ -188,6 +201,19 @@ files:
 The paths under the `YAMLCONF_SYSFILES_DIR` directory can reference
 YAMLCONF defined attributes via standard Python key based format
 references, as with `BASE_DIR` above.
+
+The attributes available can be extended using the
+`YAMLCONF_ATTRIBUTE_FUNCTIONS` attribtue.  This makes attributes based
+on, e.g., the contents of the Django application database available when
+processing files.  A contrived example would be, in a `ycattrs.py` file
+(conventionally in the same directory as the `settings.py` file):
+
+```python
+def userlist():
+    return {
+        'USERS': User.objects.all(),
+    }
+```
 
 ## Support for Dictionaries
 

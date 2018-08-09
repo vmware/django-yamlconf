@@ -122,4 +122,7 @@ class YCBaseCommand(BaseCommand):
         the contents for the system control file.
         """
         self.verbosity = options['verbosity']
-        add_cmd_attrs(options['defines'], options['attributes'])
+        attributes = getattr(settings, 'YAMLCONF_ATTRIBUTE_FUNCTIONS', [])
+        if options['attributes']:
+            attributes.extend(options['attributes'])
+        add_cmd_attrs(options['defines'], attributes)
