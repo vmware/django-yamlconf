@@ -72,6 +72,8 @@ def get_methods(methods):
                 func_name
             )
             method_attrs = func()
+            for key, value in six.iteritems(method_attrs):
+                result[key] = value
         except ValueError:
             logger.warning('"%s" does not name a packaged method', method)
         except ImportError as ex:
@@ -83,8 +85,6 @@ def get_methods(methods):
                 'Method module "%s" has no "%s": %s',
                 mod_name, func_name, ex
             )
-        for key, value in six.iteritems(method_attrs):
-            result[key] = value
     return result
 
 
