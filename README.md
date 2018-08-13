@@ -522,6 +522,9 @@ flavors of this example:
 1. Under Django version 1.11 in the directory `examples/django-1.11`
 2. Under Django version 2.0 in the directory `examples/django-2.0`
 
+See the
+[Examples Directory on GitHub](https://github.com/vmware/django-yamlconf/tree/master/examples).
+
 The examples for both versions of Django behaviour similarly: there are
 `Makefile` targets to:
 
