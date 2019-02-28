@@ -6,6 +6,9 @@
 
 ## UNRELEASED
 
+* Added `docs` directory and Sphinx infrastructure to support publishing
+  to readthedocs.org
+
 * Added support for a final, environment defined, YAML file defined
   via the environment variable `YAMLCONF_CONFFILE`
 

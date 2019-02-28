@@ -4,6 +4,8 @@ coverage
 PyYAML
 nose
 six
+Sphinx
+sphinx_rtd_theme
 pycodestyle
 pyflakes
 pylint

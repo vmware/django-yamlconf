@@ -1,6 +1,8 @@
 examples/django-1.11/mysite/sysfiles.txt
 examples/django-2.0/mysite/sysfiles.txt
 django_yamlconf/root
+docs/_build
+docs/index.rst
 static-files
 __pycache__
 db.sqlite3

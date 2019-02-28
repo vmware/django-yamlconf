@@ -13,6 +13,9 @@ distro:
 	. $(VENVDISTRO)/bin/activate && pip install six
 	. $(VENVDISTRO)/bin/activate && setup.py sdist bdist_wheel
 
+documentation:
+	$(MAKE) -C docs html
+
 check:	$(VENV)
 	$(ACTIVATE) && setup.py test
 
@@ -30,6 +33,7 @@ venv $(VENV):
 	$(ACTIVATE) && pip install -r requirements.txt
 
 clean:
+	$(MAKE) -C docs $@
 	$(MAKE) -C examples $@
 	find django_yamlconf -name __pycache__ | xargs rm -rf
 	find django_yamlconf -name '*.pyc' | xargs rm -f
