@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright © 2018, VMware, Inc.  All rights reserved.
+# Copyright © 2018-2019, VMware, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 """
 YAMLCONF
@@ -485,6 +485,9 @@ def load(syntax="yaml", settings=None, base_dir=None, project=None):
     attributes = bootstrap_attributes(base_dir)
     for filename in dirtree_find(attr_filename, settings_dir):
         load_conffile(attributes, settings, loader, filename)
+    final_conf = os.environ.get("YAMLCONF_CONFFILE", None)
+    if final_conf:
+        load_conffile(attributes, settings, loader, final_conf)
     load_envdefs(attributes, settings)
     expand_attribute_refs(attributes)
     inject_attr(attributes, settings)
@@ -514,7 +517,7 @@ def load_conffile(attributes, settings, loader, filename):
 
 def load_envdefs(attributes, settings):
     """
-    Load YAMLCONF attribute definitions from the enviornment.
+    Load YAMLCONF attribute definitions from the environment.
     """
     for name, value in six.iteritems(os.environ):
         if name.startswith("YAMLCONF_"):

@@ -1,6 +1,6 @@
 <!--
 -*- coding: utf-8 -*-
-    Copyright © 2018 VMware, Inc.  All rights reserved.
+    Copyright © 2018-2019, VMware, Inc.  All rights reserved.
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
@@ -24,6 +24,10 @@ i.e., the value for development.  This can be redefined via a `buildaudit.yaml`
 file using the definition::
 
     DEBUG: false
+
+If the environment variable `YAMLCONF_CONFFILE` is defined, it uses as the
+final YAML file loaded (in this case, the file name does not need to match
+the project name and it can be located anywhere in the file system).
 
 ## License
 
