@@ -1,8 +1,3 @@
-<!--
--*- coding: utf-8 -*-
-    Copyright © 2018-2019, VMware, Inc.  All rights reserved.
-    SPDX-License-Identifier: BSD-2-Clause
--->
 
 # django-yamlconf
 
@@ -36,6 +31,8 @@ the project name and it can be located anywhere in the file system).
 ## License
 
 `django-yamlconf` is release under the BSD-2 license, see the LICENSE file.
+
+SPDX-License-Identifier: BSD-2-Clause
 
 ## Usage
 
@@ -580,3 +577,5 @@ refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 ## Authors
 
 Created and maintained by Michael Rohan <mrohan@vmware.com>
+
+Copyright © 2018-2019, VMware, Inc.  All rights reserved.

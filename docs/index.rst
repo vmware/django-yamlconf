@@ -1,11 +1,3 @@
-.. raw:: html
-
-   <!--
-   -*- coding: utf-8 -*-
-       Copyright © 2018-2019, VMware, Inc.  All rights reserved.
-       SPDX-License-Identifier: BSD-2-Clause
-   -->
-
 django-yamlconf
 ===============
 
@@ -42,6 +34,8 @@ License
 
 ``django-yamlconf`` is release under the BSD-2 license, see the LICENSE
 file.
+
+SPDX-License-Identifier: BSD-2-Clause
 
 Usage
 -----
@@ -426,94 +420,32 @@ attribute definitions from YAML file located in the directory tree.
 Other methods are exported, and are documented here, but it is expected
 that these methods are only used by the management commands.
 
+.. currentmodule:: django_yamlconf
+
 ``add_attributes`` Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: python
-
-    add_attributes(settings, attributes, source)
-
-Parameters: \* ``settings``, the Django settings module \*
-``attributes``, the dictionary of name/values pairs to add \*
-``source``, the name for the source (displayed by ``ycexplain``)
-
-Add a set of name value pairs to the set of attributes, e.g., attributes
-defined on the command line for management commands. Since this occurs
-after Django has loaded the settings, this function *does not*, in
-general, change behaviour of Django. It is used to add attribute
-definitions from management command lines. While this does not impact
-the behaviour of Django, it does make the attributes available for use
-in templates for the ``ycsysfiles`` command.
+.. autofunction:: add_attributes
 
 ``defined_attributes`` Function
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: python
-
-    defined_attributes(settings)
-
-Parameters: \* ``settings``, the Django settings module
-
-Return a dictionary giving attribute names and associated values. This
-dictionary is used as the variables when rendering templates for the
-``ycsysfiles`` command.
+.. autofunction:: defined_attributes
 
 ``explain`` Function
 ~~~~~~~~~~~~~~~~~~~~
 
-.. code:: python
-
-    explain(name, settings, stream=sys.stdout)
-
-Parameters: \* ``name``, the YAMLCONF controlled setting name \*
-``settings``, the Django settings module \* ``stream``, the stream to
-write the explanation text
-
-Explain the source for an attribute definition including sources that
-were eclipsed by higher level YAML definition files. If the attribute
-has associated documentation, it is also printed.
-
-This routine is only used by the YAMLCONF management commands.
+.. autofunction:: explain
 
 ``list_attrs`` Function
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-.. code:: python
-
-    list_attrs(settings=None, stream=sys.stdout)
-
-Parameters: \* ``settings``, the Django settings module \* ``stream``,
-the stream to write the list text
-
-Write a list of attributes managed by YAMLCONF to the given stream.
-Additional information can be printed using the ``explain`` routine.
+.. autofunction:: list_attrs
 
 ``load`` Function
 ~~~~~~~~~~~~~~~~~
 
-.. code:: python
-
-    load(syntax="yaml", settings=None, base_dir=None, project=None)
-
-Parameters: \* ``syntax``, the name a Python module with a ``load``
-method, e.g., the default is ``yaml.load``. Other possibilities could be
-``json`` to use JSON formatted file or, even, ``pickle`` but that would
-be strange. The ``syntax`` name is also used as the file extension for
-the YAMLCONF files. The ``syntax`` argument name a Python module with a
-``load`` method, e.g., the default, ``yaml`` support a ``load`` method
-to load the definition from a file. Other possibilities could be
-``json`` to use JSON formatted file or, even, ``pickle`` but that would
-be strange. The ``syntax`` name is also used as the file extension for
-the YAMLCONF files. \* ``settings``, the module containing the Django
-settings. This is determined from the call stack if no module is given.
-\* ``base_dir``, the starting directory when searching for YAMLCONF
-files, defaults to the directory containing the settings module. \*
-``project``, the name of the Django project, defaults to the name of the
-directory containing the settings modules.
-
-Load the set of YAML files for a Django project. The simplest usage is
-to call this at the end of a settings file. In this context, no
-arguments are needed.
+.. autofunction:: load
 
 ``sysfiles`` Function
 ~~~~~~~~~~~~~~~~~~~~~

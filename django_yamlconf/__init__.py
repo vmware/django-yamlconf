@@ -43,8 +43,19 @@ _YAMLCONF_ATTRIBUTES = "_YAMLCONF_ATTRIBUTES"
 
 def add_attributes(settings, attributes, source):
     """
-    Add a set of name value pairs to the set of attributes, e.g., attributes
-    defined on the command line.
+    Add a set of name value pairs to the set of attributes, e.g.,
+    attributes defined on the command line for management commands. Since
+    this occurs after Django has loaded the settings, this function
+    *does not*, in general, change behaviour of Django. It is used to
+    add attribute definitions from management command lines. While this
+    does not impact the behaviour of Django, it does make the attributes
+    available for use in templates for the ``ycsysfiles`` command.
+
+    :param settings: the Django settings module
+    :param attributes: the dictionary of name/values pairs to add
+    :param source: the name for the source (displayed by ``ycexplain``)
+    :return: `None`
+
     """
     cur_attributes = get_cached_attributes(settings)
     for key, value in six.iteritems(attributes):
@@ -133,8 +144,14 @@ def bootstrap_attributes(base_dir):
 def defined_attributes(settings=None):
     """
     Return a dictionary giving attribute names and associated values.
-    This dictionary can be used as the variables when rendering
-    templates.
+    This dictionary can be used as the variables when rendering templates.
+    This is the set attributed used used as the variables when rendering
+    templates for the ``ycsysfiles`` command.
+
+    :param settings: the Django settings module (this is optional,
+        defaults to the settings modules used when loading)
+    :return: a dictionary giving attribute names and associated values.
+    :rtype: dict
     """
     attributes = get_cached_attributes(settings)
     if not attributes:
@@ -240,14 +257,21 @@ def expand_attr_helper(value, name="root", wrt=None):
     return value
 
 
-def explain(name, settings=None, stream=sys.stdout):
+def explain(name, settings=None, stream=None):
     """
     Explain the source for an attribute definition including sources that
     were eclipsed by higher level YAML definition files.  If the attribute
     has associated documentation, it is also printed.
 
-    This routine is only used by the YAMLCONF management commands.
+    This routine is only used by the YAMLCONF management command ``ycexplain``.
+
+    :param name: the YAMLCONF controlled setting name
+    :param settings: the Django settings module
+    :param stream: the stream to write the explanation text (defaults to
+        ``sys.stdout``)
+    :return: `None`
     """
+    stream = stream or sys.stdout
     attr_info = get_attr_info(name, settings=settings)
     if attr_info is None:
         stream.write("The setting \"{0}\" is not managed by YAMLCONF\n".format(
@@ -426,13 +450,20 @@ def inject_attr(attributes, settings):
             setattr(settings, attr, value)
 
 
-def list_attrs(settings=None, stream=sys.stdout):
+def list_attrs(settings=None, stream=None):
     """
-    List the attributes loaded by YAMLCONF processing.  Additional information
-    is available on these attributes via the explain routine.
+    Write a list of attributes managed by YAMLCONF to the given stream
+    (defaults to ``sys.stdout``).
+    Additional information can be printed using the ``explain`` routine.
 
-    This routine is only used by the YAMLCONF management commands.
+    This routine is only used by the YAMLCONF management command ``yclist``.
+
+    :param settings: the Django settings module
+    :param stream: the stream to write the list text
+    :return: `None`
+
     """
+    stream = stream or sys.stdout
     attributes = get_cached_attributes(settings)
     if not attributes:
         stream.write("No YAMLCONF atttributes defined\n")
@@ -459,20 +490,20 @@ def load(syntax="yaml", settings=None, base_dir=None, project=None):
     to call this at the end of a settings file.  In this context, no arguments
     are needed.
 
-    The "syntax" parameter should name a Python module with a "load" method,
-    e.g., the default is "yaml.load".  Other possibiliities could be "json"
-    to use JSON formatted file or, even, "pickle" but that would be strange.
-    The "syntax" name is also used as the file extension for the YAMLCONF
-    files.
-
-    The "settings" should be module containing the Django settings.  This
-    is determined from the call stack if no module is given.
-
-    The "base_dir" defines the starting directory for YAMLCONF files and
-    defaults to the directory containing the settings module.
-
-    Finally, the "project" is the name of the Django project and defaults
-    to the name of the directory containing the settings modules.
+    :param syntax: The "syntax" parameter should name a Python module with
+        a "load" method, e.g., the default is "yaml.load".  Other
+        possibiliities could be "json" to use JSON formatted file or,
+        even, "pickle" but that would be strange.  The "syntax" name is
+        also used as the file extension for the YAMLCONF files.
+    :param settings: The "settings" should be module containing the Django
+        settings.  This is determined from the call stack if no module
+        is given.
+    :param base_dir: The "base_dir" defines the starting directory for
+        YAMLCONF files and defaults to the directory containing the
+        settings module.
+    :param project: The "project" is the name of the Django project and
+        defaults to the name of the directory containing the settings modules.
+    :return: `None`
     """
     loader = get_loader(syntax)
     if loader is None:
