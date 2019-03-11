@@ -670,6 +670,16 @@ def sysfiles(create, noop, settings, rootdir="", render=None):
     """
     Traverse the sys templates directory expanding files to the destination
     directory.
+
+    :param create: the template files should be created, normally will only
+        update files that already exist on the system and are writable.
+    :param noop: no-op mode, print what would be done.
+    :param settings: the Django settings module
+    :param rootdir: the directory to create the system files, defaults to
+        ``/``, i.e., the root file system.
+    :param render: the rendering engine, if not given, defaults to Django's
+        ``render_to_string``
+    :return: `None`
     """
     attributes = sf_attributes(settings)
     templates_dir = attributes.get("YAMLCONF_SYSFILES_DIR", None)
