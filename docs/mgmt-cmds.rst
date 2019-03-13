@@ -2,6 +2,8 @@
    Copyright © 2019, VMware, Inc.  All rights reserved.
    SPDX-License-Identifier: BSD-2-Clause
 
+.. _mgmtcmds:
+
 Management Commands
 -------------------
 
@@ -28,15 +30,15 @@ attribute ``YAMLCONF_ATTRIBUTE_FUNCTIONS``, e.g.,
 As can be seen from the example method above, these additional attibutes
 are primarily used with the ``ycsysfiles`` command.
 
+.. _mgmtcmds-ycexplain:
+
 ``ycexplain`` Command
 ~~~~~~~~~~~~~~~~~~~~~
 
 This ``ycexplain`` gives information on the value defined by the set of
 YAML files loaded for an application along with any documentation and
 information on eclipsed attribute values lower in the directory tree
-structure. For example, for the ``DEBUG`` attribute:
-
-::
+structure. For example, for the ``DEBUG`` attribute::
 
         $ python manage.py ycexplain DEBUG
         ---------------------------
@@ -49,6 +51,8 @@ structure. For example, for the ``DEBUG`` attribute:
         Eclipsed values:
             "True" via "/u/mrohan/clients/xmpl/buildaudit/buildaudit.yaml"
             "True" via "buildaudit.settings"
+
+.. _mgmtcmds-yclist:
 
 ``yclist`` Command
 ~~~~~~~~~~~~~~~~~~
@@ -91,6 +95,8 @@ files, e.g.,:
         YAMLCONF_SYSFILES_DIR           {BASE_DIR}/osstpmgt/templates/sys
 
         Use "ycexplain" for more information on individual attributes
+
+.. _mgmtcmds-ycsysfiles:
 
 ``ycsysfiles`` Command
 ~~~~~~~~~~~~~~~~~~~~~~

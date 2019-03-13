@@ -2,6 +2,8 @@
    Copyright © 2019, VMware, Inc.  All rights reserved.
    SPDX-License-Identifier: BSD-2-Clause
 
+.. _contributing:
+
 Contributing
 ------------
 
@@ -13,6 +15,8 @@ repository must be signed as described on that page. Your signature
 certifies that you wrote the patch or have the right to pass it on as an
 open-source patch. For more detailed information, refer to
 `CONTRIBUTING.md <CONTRIBUTING.md>`__.
+
+.. _authors:
 
 Authors
 -------

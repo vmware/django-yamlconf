@@ -2,6 +2,8 @@
    Copyright © 2019, VMware, Inc.  All rights reserved.
    SPDX-License-Identifier: BSD-2-Clause
 
+.. _format:
+
 Support for Dictionaries
 ------------------------
 

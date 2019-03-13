@@ -2,8 +2,12 @@
    Copyright © 2019, VMware, Inc.  All rights reserved.
    SPDX-License-Identifier: BSD-2-Clause
 
+.. _releases:
+
 Releases & Major Branches
 -------------------------
+
+.. _releases-1.0.0:
 
 Version 1.0.0
 ~~~~~~~~~~~~~

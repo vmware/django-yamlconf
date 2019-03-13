@@ -2,6 +2,8 @@
    Copyright © 2019, VMware, Inc.  All rights reserved.
    SPDX-License-Identifier: BSD-2-Clause
 
+.. _api:
+
 Public Methods
 ==============
 
@@ -12,30 +14,42 @@ that these methods are only used by the management commands.
 
 .. currentmodule:: django_yamlconf
 
+.. _api-add_attributes:
+
 ``add_attributes`` Function
 ---------------------------
 
 .. autofunction:: add_attributes
+
+.. _api-defined_attributes:
 
 ``defined_attributes`` Function
 -------------------------------
 
 .. autofunction:: defined_attributes
 
+.. _api-explain:
+
 ``explain`` Function
 --------------------
 
 .. autofunction:: explain
+
+.. _api-list_attrs:
 
 ``list_attrs`` Function
 -----------------------
 
 .. autofunction:: list_attrs
 
+.. _api-load:
+
 ``load`` Function
 -----------------
 
 .. autofunction:: load
+
+.. _api-sysfiles:
 
 ``sysfiles`` Function
 ---------------------
