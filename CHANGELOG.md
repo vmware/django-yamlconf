@@ -6,6 +6,11 @@
 
 ## UNRELEASED
 
+* Handle stricter loading for newer versions of PyYAML.  The warning
+  "YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated" is
+  generated referring to https://msg.pyyaml.org/load for full details.  The
+  YAML load now specified Loader=FullLoader.
+
 * The `defined_attributes` function now returns a dictionary with additional
   keys if the attribute defined is a nested dictionary, the top level
   dictionary from the setting file is now also added, e.g., if

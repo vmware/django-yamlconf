@@ -388,14 +388,18 @@ def get_loader(syntax):
     has a "load" routine which parse an open file and returns dict/list of the
     file contents, e.g., "yaml.load", "json.load".
     """
+    loader = None
+    kwargs = {}
     try:
-        return __import__(syntax).load
+        module = __import__(syntax)
+        loader = module.load
+        if hasattr(module, "FullLoader"):
+            kwargs = {'Loader': getattr(module, "FullLoader")}
     except ImportError as ex:
         logger.error('Unsupported YAMLCONF format "%s": %s', syntax, ex)
-        return None
     except AttributeError as ex:
         logger.error('Loader "%s" has no "load" method: %s', syntax, ex)
-        return None
+    return loader, kwargs
 
 
 def get_settings():
@@ -518,7 +522,7 @@ def load(syntax="yaml", settings=None, base_dir=None, project=None):
         defaults to the name of the directory containing the settings modules.
     :return: `None`
     """
-    loader = get_loader(syntax)
+    loader, loader_kwargs = get_loader(syntax)
     if loader is None:
         return
     settings = settings or get_settings()
@@ -528,23 +532,23 @@ def load(syntax="yaml", settings=None, base_dir=None, project=None):
     attr_filename = "{0}.{1}".format(project, syntax)
     attributes = bootstrap_attributes(base_dir)
     for filename in dirtree_find(attr_filename, settings_dir):
-        load_conffile(attributes, settings, loader, filename)
+        load_conffile(attributes, settings, loader, loader_kwargs, filename)
     final_conf = os.environ.get("YAMLCONF_CONFFILE", None)
     if final_conf:
-        load_conffile(attributes, settings, loader, final_conf)
+        load_conffile(attributes, settings, loader, loader_kwargs, final_conf)
     load_envdefs(attributes, settings)
     expand_attribute_refs(attributes)
     inject_attr(attributes, settings)
 
 
-def load_conffile(attributes, settings, loader, filename):
+def load_conffile(attributes, settings, loader, loader_kwargs, filename):
     """
     Load an individual YAML file.  The data loaded is merged into the
     current set of attributes via the "set_attr_value" routine.
     """
     with codecs.open(filename, "r", encoding="utf-8") as defs:
         try:
-            data = loader(defs)
+            data = loader(defs, **loader_kwargs)
         except Exception as ex:
             logger.error('Failed to load "%s": %s', filename, ex)
             return
