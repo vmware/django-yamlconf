@@ -141,7 +141,7 @@ def bootstrap_attributes(base_dir):
     return result
 
 
-def defined_attributes(settings=None):
+def defined_attributes(settings=None, template_use=False):
     """
     Return a dictionary giving attribute names and associated values.
     This dictionary can be used as the variables when rendering templates.
@@ -150,13 +150,26 @@ def defined_attributes(settings=None):
 
     :param settings: the Django settings module (this is optional,
         defaults to the settings modules used when loading)
+    :param template_use: If the the set of attributes return needs to be
+        used to process a template, in the dictionary returned,
+        attribute keys are added for dictionary parents e.g., "DATABASES", if
+        "DATABASES.default..." is a YAMLCONF defined attribute.  The usage
+        without this option support the `yclist` management command.
     :return: a dictionary giving attribute names and associated values.
     :rtype: dict
     """
     attributes = get_cached_attributes(settings)
     if not attributes:
         return {}
-    return {key: attributes[key]['evalue'] for key in attributes.keys()}
+    result = {key: attributes[key]['evalue'] for key in attributes.keys()}
+    # We are updating the result, avoid RunTimeError by creating a
+    # temporary list for the set of keys in the iteration here
+    for key in [k for k in result.keys()]:
+        if '.' in key:
+            base_key = key.split('.')[0]
+            if base_key not in result:
+                result[base_key] = getattr(settings, base_key)
+    return result
 
 
 def dirtree_find(filename, start_dir):
@@ -612,24 +625,6 @@ def set_attr_value(attributes, settings, filename, name, value):
         attr_data['value'] = value
 
 
-def sf_attributes(settings):
-    """
-    Return the dictionary of attributes the can be referenced in the
-    templates for the sysfiles command.  Attribute key are added for
-    dictionary parents e.g., "DATABASES", if "DATABASES.default..." is a
-    YAMLCONF defined attribute.
-    """
-    result = defined_attributes(settings)
-    # We are updating the result, avoid RunTimeError by copying the set of
-    # keys for iteration.
-    for key in [k for k in result.keys()]:
-        if '.' in key:
-            base_key = key.split('.')[0]
-            if base_key not in result:
-                result[base_key] = getattr(settings, base_key)
-    return result
-
-
 def sf_init_file(create, noop, attrs, dst_filepath, src_filepath, render=None):
     """
     Initialize a system file based on a template under the "sys"
@@ -681,7 +676,7 @@ def sysfiles(create, noop, settings, rootdir="", render=None):
         ``render_to_string``
     :return: `None`
     """
-    attributes = sf_attributes(settings)
+    attributes = defined_attributes(settings, template_use=True)
     templates_dir = attributes.get("YAMLCONF_SYSFILES_DIR", None)
     if templates_dir:
         td_len = len(templates_dir)
