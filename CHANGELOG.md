@@ -4,7 +4,7 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
-## UNRELEASED
+## 1.1.0 - 2019-03-17
 
 * Handle stricter loading for newer versions of PyYAML.  The warning
   "YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated" is
