@@ -1,5 +1,5 @@
-# -*- encoding: utf-8 -*-
-# Copyright © 2018 VMware, Inc.  All rights reserved.
+# -*- coding: utf-8 -*-
+# Copyright © 2018-2019 VMware, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 """
 Basic views to allow browsing of the YAMLCONF definitions.
