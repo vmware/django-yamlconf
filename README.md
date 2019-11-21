@@ -560,9 +560,7 @@ DATABASES.default:
 
 ## Releases & Major Branches
 
-### Version 1.0.0
-
-* Initial public release (tagged with `v1.0.0`)
+See [CHANGELOG.md](CHANGELOG.md) for information on releases.
 
 ## Contributing
 

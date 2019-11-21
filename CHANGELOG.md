@@ -14,8 +14,8 @@
 * The `defined_attributes` function now returns a dictionary with additional
   keys if the attribute defined is a nested dictionary, the top level
   dictionary from the setting file is now also added, e.g., if
-  "DATABASES.default" is defined, the value returned will have a "DATABASES"
-  key.
+  "DATABASES.default" is defined, the value returned will now have have a
+  "DATABASES" key.
 
 * Added `docs` directory and Sphinx infrastructure to support publishing
   to readthedocs.org

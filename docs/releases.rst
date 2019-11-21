@@ -7,10 +7,30 @@
 Releases & Major Branches
 -------------------------
 
+.. _releases-1.1.0:
+
+Version 1.1.0
+~~~~~~~~~~~~~
+
+- Tagged with ``v1.1.0``.
+- Handle stricter loading for newer versions of PyYAML.  The warning
+  "YAMLLoadWarning: calling yaml.load() without Loader=... is deprecated" is
+  generated referring to https://msg.pyyaml.org/load for full details.  The
+  YAML load now specified Loader=FullLoader.
+- The ``defined_attributes`` function now returns a dictionary with additional
+  keys if the attribute defined is a nested dictionary, the top level
+  dictionary from the setting file is now also added, e.g., if
+  "``DATABASES.default``" is defined, the value returned will now also have
+  a "``DATABASES``" key.
+- Added ``docs`` directory and Sphinx infrastructure to support publishing
+  to readthedocs.org
+- Added support for a final, environment defined, YAML file defined
+  via the environment variable `YAMLCONF_CONFFILE`
+
 .. _releases-1.0.0:
 
 Version 1.0.0
 ~~~~~~~~~~~~~
 
--  Initial public release (tagged with ``v1.0.0``)
+- Initial public release (tagged with ``v1.0.0``)
 
