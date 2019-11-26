@@ -7,6 +7,15 @@
 Releases & Major Branches
 -------------------------
 
+.. _releases-1.2.0:
+
+Version 1.2.0
+~~~~~~~~~~~~~
+
+- Not yet tagged (in progress).
+- Added the built-in attribute ``CPU_COUNT`` (primarily for use in uWSGI
+  ini files) giving the number of available CPUs.
+
 .. _releases-1.1.0:
 
 Version 1.1.0

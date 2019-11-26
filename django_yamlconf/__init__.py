@@ -15,6 +15,7 @@ import codecs
 import copy
 import getpass
 import logging
+import multiprocessing
 import os
 import platform
 import sys
@@ -121,6 +122,7 @@ def bootstrap_attributes(base_dir):
         LOG_DIR: "{BASE_DIR}/log"
     """
     result = {}
+    add_attr_info(result, 'CPU_COUNT', multiprocessing.cpu_count())
     add_attr_info(result, 'TOP_DIR', os.path.dirname(base_dir))
     add_attr_info(result, 'BASE_DIR', base_dir)
     add_attr_info(result, 'VIRTUAL_ENV', os.environ.get("VIRTUAL_ENV", None))

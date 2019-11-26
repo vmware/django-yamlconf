@@ -4,6 +4,11 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
+## 1.2.0 - In Progress
+
+* Added the built-in attribute `CPU_COUNT` (primarily for use in uWSGI
+  ini files) giving the number of available CPUs.
+
 ## 1.1.0 - 2019-03-17
 
 * Handle stricter loading for newer versions of PyYAML.  The warning
