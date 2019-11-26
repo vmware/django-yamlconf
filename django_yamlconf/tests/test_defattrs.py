@@ -38,9 +38,9 @@ class TestDefAttrs(YCTestCase):
         """
         self.assertEqual(
             sorted(self.defattrs.keys()),
-            ['A', 'B', 'BASE_DIR', 'C', 'D', 'OS_MACHINE', 'OS_NODE',
-             'OS_PROCESSOR', 'OS_RELEASE', 'OS_SYSTEM', 'PYTHON', 'TOP_DIR',
-             'USER', 'VIRTUAL_ENV']
+            ['A', 'B', 'BASE_DIR', 'C', 'CPU_COUNT', 'D', 'OS_MACHINE',
+             'OS_NODE', 'OS_PROCESSOR', 'OS_RELEASE', 'OS_SYSTEM', 'PYTHON',
+             'TOP_DIR', 'USER', 'VIRTUAL_ENV']
         )
 
     def test_no_defined_attrs(self):

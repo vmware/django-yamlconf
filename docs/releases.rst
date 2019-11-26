@@ -15,6 +15,9 @@ Version 1.2.0
 - Not yet tagged (in progress).
 - Added the built-in attribute ``CPU_COUNT`` (primarily for use in uWSGI
   ini files) giving the number of available CPUs.
+- Ensure the absolute path is used when searching for YAML control
+  files.  This issue is seen when running Django apps under uWSGI
+  control.
 
 .. _releases-1.1.0:
 

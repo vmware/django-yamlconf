@@ -184,7 +184,7 @@ def dirtree_find(filename, start_dir):
         /u/mrohan/clients/xmpl.yaml
         /u/mrohan/xmpl.yaml
     """
-    curdir = start_dir or os.getcwd()
+    curdir = os.path.abspath(start_dir or os.getcwd())
     done = False
     while not done:
         test_file = os.path.join(curdir, filename)
