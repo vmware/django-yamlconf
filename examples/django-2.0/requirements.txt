@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
-# Copyright © 2018, VMware, Inc.  All rights reserved.
+# Copyright © 2018-2020, VMware, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 
-Django==2.2.10
-pycodestyle==2.5.0
-pyflakes==2.1.1
-pylint==2.4.4
-PyYAML==5.3
-six==1.14.0
+Django<3
+pycodestyle
+pyflakes
+pylint
+PyYAML
+six
