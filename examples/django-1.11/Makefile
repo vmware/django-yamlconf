@@ -15,8 +15,6 @@ all:
 	@echo "Use 'make init' to initial the DB and create super user"
 	@echo "Use 'make runserver' to run the example application"
 	@echo "Use 'make yclist' to see an example YAMLCONF list"
-	@echo "Use 'make ycexplain' to see an example YAMLCONF explain"
-	@echo "Use 'make ycsysfiles' to see an example YAMLCONF sysfiles"
 
 check runserver shell yclist:	$(VENV)
 	$(MANAGE) $@

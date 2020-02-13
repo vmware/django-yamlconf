@@ -2,7 +2,7 @@
 # Copyright © 2018, VMware, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 
-Django==1.11.23
-pytz==2017.3
-PyYAML==3.12
-six==1.11.0
+Django==1.11.28
+pytz==2019.3
+PyYAML==5.3
+six==1.14.0
