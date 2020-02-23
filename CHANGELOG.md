@@ -6,6 +6,9 @@
 
 ## 1.2.0 - In Progress
 
+*  `ycsysfiles` should generate executable files if the source template
+   file is executable.
+
 * Ensure the absolute path is used when searching for YAML control
   files.  This issue is seen when running Django apps under uWSGI
   control.

@@ -18,6 +18,7 @@ import logging
 import multiprocessing
 import os
 import platform
+import stat
 import sys
 import textwrap
 import traceback
@@ -659,6 +660,10 @@ def sf_init_file(create, noop, attrs, dst_filepath, src_filepath, render=None):
         with codecs.open(dst_filepath, "wb", "utf-8") as dest_file:
             logger.info('Updating the system control file "%s"', dst_filepath)
             dest_file.write(contents)
+        if os.access(src_filepath, os.X_OK):
+            mode = os.stat(src_filepath).st_mode
+            mode |= (mode & 0o444) >> 2    # copy R bits to X
+            os.chmod(dst_filepath, mode)
     except (IOError, OSError):
         # Raise by either the makedirs or the open
         logger.debug(
