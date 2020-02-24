@@ -7,9 +7,14 @@ import codecs
 from os import path
 from setuptools import setup
 
-def readme():
-    with codecs.open('README.md', 'r', 'utf-8') as f:
-        return f.read()
+def index():
+    result = ""
+    with codecs.open('docs/index.rst', 'r', 'utf-8') as f:
+        for line in f.readlines():
+            if line.startswith("Contents:"):
+                return result
+            result += line
+    return result
 
 def version():
     vers_path = path.join(
@@ -28,7 +33,7 @@ setup(
     author='Michael Rohan',
     author_email='mrohan@vmware.com',
     description='Define Django settings in local YAML (or JSON) files',
-    long_description=readme(),
+    long_description=index(),
     license='BSD-2',
     platforms=['Any'],
     keywords=['django'],
