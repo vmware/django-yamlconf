@@ -12,7 +12,7 @@ Releases & Major Branches
 Version 1.2.0
 ~~~~~~~~~~~~~
 
-- Not yet tagged (in progress).
+- Tagged with ``v1.2.0``.
 - Updates to support Django 3.0: Simply use "`six`" instead of the
   support "`django.utils.six`" package and use "`render`" instead of
   "`render_to_response`".

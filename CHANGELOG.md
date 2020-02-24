@@ -4,7 +4,7 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
-## 1.2.0 - In Progress
+## 1.2.0 - 2020-02-23
 
 * Updates to support Django 3.0: Simply use "`six`" instead of the
   support "`django.utils.six`" package and use "`render`" instead of
