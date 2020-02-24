@@ -19,7 +19,7 @@ def version():
     )
     with open(vers_path, "r") as fh:
         v_info = fh.readline()
-    return ".".join(filter(lambda x: x != '', v_info.split(" ")))
+    return ".".join(filter(lambda x: x != '', v_info.split(" "))).strip()
 
 
 setup(
