@@ -8,7 +8,7 @@ Basic views to allow browsing of the YAMLCONF definitions.
 import logging
 from django.contrib.admin.views.decorators import staff_member_required
 from django.http import Http404
-from django.shortcuts import render_to_response
+from django.shortcuts import render
 from django_yamlconf import get_cached_attributes
 from django_yamlconf import get_attr_info
 
@@ -23,7 +23,8 @@ def index(request):
     """
     title = 'YAMLCONF Attributes'
     logger.debug("Generating index page for YAMLCONF")
-    return render_to_response(
+    return render(
+        request,
         "yamlconf/index.html",
         {'attrs': get_cached_attributes(), 'title': title}
     )
@@ -40,7 +41,8 @@ def attr_info(request, name):
     if info is None:
         logger.info("No such YAMLCONF attribute \"%s\"", name)
         raise Http404
-    return render_to_response(
+    return render(
+        request,
         "yamlconf/attribute.html",
         {'name': name, 'info': info, 'title': title}
     )

@@ -5,7 +5,7 @@
 Test the "ycexplain" management command
 """
 
-from django.utils.six import StringIO
+from six import StringIO
 
 import django_yamlconf
 from django_yamlconf.tests import MockSettings

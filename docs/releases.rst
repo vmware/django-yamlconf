@@ -13,6 +13,9 @@ Version 1.2.0
 ~~~~~~~~~~~~~
 
 - Not yet tagged (in progress).
+- Updates to support Django 3.0: Simply use "`six`" instead of the
+  support "`django.utils.six`" package and use "`render`" instead of
+  "`render_to_response`".
 - `ycsysfiles` should generate executable files if the source template
   file is executable.
 - Ensure the absolute path is used when searching for YAML control
