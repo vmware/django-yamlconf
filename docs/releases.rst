@@ -7,6 +7,13 @@
 Releases & Major Branches
 -------------------------
 
+.. _releases-1.3.0:
+
+Version 1.3.0
+~~~~~~~~~~~~~
+
+- Untagged, in progress.
+
 .. _releases-1.2.0:
 
 Version 1.2.0
