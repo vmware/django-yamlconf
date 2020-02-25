@@ -4,7 +4,9 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
-## 1.3.0 - In progress
+## 1.2.1 - 2020-02-24
+
+* Fix generation of the long description for the package.
 
 ## 1.2.0 - 2020-02-23
 

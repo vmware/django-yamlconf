@@ -7,12 +7,13 @@
 Releases & Major Branches
 -------------------------
 
-.. _releases-1.3.0:
+.. _releases-1.2.1:
 
-Version 1.3.0
+Version 1.2.1
 ~~~~~~~~~~~~~
 
-- Untagged, in progress.
+- Tagged with ``v1.2.1``.
+- Fix generation of the long description for the package.
 
 .. _releases-1.2.0:
 
