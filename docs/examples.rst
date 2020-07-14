@@ -12,6 +12,7 @@ Project <https://www.djangoproject.com/>`__ web site. There are two
 flavors of this example:
 
 1. Under Django version 2.0 in the directory ``examples/django-2.0``
+2. Under Django version 3.0 in the directory ``examples/django-3.0``
 
 The ``django-1.11`` directory has been removed as it is end of life and
 GitHub is generating secuity issues on the old dependencies.
