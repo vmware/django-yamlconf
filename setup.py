@@ -136,7 +136,6 @@ setup(
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
     install_requires=[
-        'Django>=1.7',
         'PyYAML>=3.10',
         'six>=1.10.0',
     ],
