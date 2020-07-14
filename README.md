@@ -528,8 +528,10 @@ The examples are based on the `polls` example from the
 [Django Project](https://www.djangoproject.com/) web site.  There are two
 flavors of this example:
 
-1. Under Django version 1.11 in the directory `examples/django-1.11`
-2. Under Django version 2.0 in the directory `examples/django-2.0`
+1. Under Django version 2.0 in the directory `examples/django-2.0`
+
+The `django-1.11` directory has been removed as it is end of life and
+GitHub is generating secuity issues on the old dependencies.
 
 See the
 [Examples Directory on GitHub](https://github.com/vmware/django-yamlconf/tree/master/examples).
