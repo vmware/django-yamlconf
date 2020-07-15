@@ -4,6 +4,18 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
+## 1.3.0 - 2020-07-15
+
+* Dropped explicit dependency on Django for package.  Overall project
+  should include Django but also allows usage of package outside of a
+  Django project.
+
+* Update to support Django 3.0 (staticfiles -> static in template)
+
+* Added Django 3.0 example (polls)
+
+* Removed the Django 1.x example (polls)
+
 ## 1.2.1 - 2020-02-24
 
 * Fix generation of the long description for the package.

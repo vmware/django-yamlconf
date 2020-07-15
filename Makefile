@@ -3,15 +3,14 @@
 # SPDX-License-Identifier: BSD-2-Clause
 
 # Utility Makefile to package, clean and test
-PYVER=3
-VENV=.venv$(PYVER)
+VENV=.venv
 VENVDISTRO=.venv-distro
 ACTIVATE=. $(VENV)/bin/activate
 
 distro:
-	if [ ! -d $(VENVDISTRO) ]; then virtualenv $(VENVDISTRO); fi
+	if [ ! -d $(VENVDISTRO) ]; then python3 -m venv $(VENVDISTRO); fi
 	. $(VENVDISTRO)/bin/activate && pip install six
-	. $(VENVDISTRO)/bin/activate && setup.py sdist bdist_wheel
+	. $(VENVDISTRO)/bin/activate && setup.py sdist
 
 documentation:
 	$(MAKE) -C docs html
@@ -29,7 +28,7 @@ style-check:	$(VENV)
 	$(ACTIVATE) && find django_yamlconf -name '*.py' | grep -v tests | xargs pylint
 
 venv $(VENV):
-	virtualenv --python=python$(PYVER) $(VENV)
+	python3 -m venv $(VENV)
 	$(ACTIVATE) && pip install -r requirements.txt
 
 clean:

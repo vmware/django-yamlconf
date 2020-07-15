@@ -7,6 +7,19 @@
 Releases & Major Branches
 -------------------------
 
+.. _releases-1.3.0:
+
+Version 1.3.0
+~~~~~~~~~~~~~
+
+- Tagged with ``v1.3.0``.
+- Dropped explicit dependency on Django for package.  Overall project
+  should include Django but also allows usage of package outside of a
+  Django project.
+- Update to support Django 3.0 (staticfiles -> static in template)
+- Added Django 3.0 example (polls)
+- Removed the Django 1.x example (polls)
+
 .. _releases-1.2.1:
 
 Version 1.2.1
