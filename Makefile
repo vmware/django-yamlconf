@@ -9,6 +9,7 @@ ACTIVATE=. $(VENV)/bin/activate
 
 distro:
 	if [ ! -d $(VENVDISTRO) ]; then python3 -m venv $(VENVDISTRO); fi
+	. $(VENVDISTRO)/bin/activate && pip install -U pip
 	. $(VENVDISTRO)/bin/activate && pip install six
 	. $(VENVDISTRO)/bin/activate && setup.py sdist
 
@@ -29,6 +30,7 @@ style-check:	$(VENV)
 
 venv $(VENV):
 	python3 -m venv $(VENV)
+	$(ACTIVATE) && pip install -U pip
 	$(ACTIVATE) && pip install -r requirements.txt
 
 clean:
