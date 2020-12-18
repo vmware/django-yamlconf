@@ -14,6 +14,7 @@ from __future__ import unicode_literals
 import codecs
 import copy
 import getpass
+import json
 import logging
 import multiprocessing
 import os
@@ -572,11 +573,20 @@ def load_envdefs(attributes, settings):
     """
     for name, value in six.iteritems(os.environ):
         if name.startswith("YAMLCONF_"):
+            attrname = name.replace("YAMLCONF_", "")
+            if attributes.get(attrname + ":json"):
+                try:
+                    value = json.loads(value)
+                except json.decoder.JSONDecodeError:
+                    logger.error(
+                        'YAMLCONF: JSON decode of "%s" failed for "%s"',
+                        value, attrname
+                    )
             set_attr_value(
                 attributes,
                 settings,
                 "**ENVIRONMENT**",
-                name.replace("YAMLCONF_", ""),
+                attrname,
                 value
             )
 

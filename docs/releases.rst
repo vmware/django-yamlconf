@@ -7,6 +7,15 @@
 Releases & Major Branches
 -------------------------
 
+.. _releases-1.4.0:
+
+Version 1.4.0
+~~~~~~~~~~~~~
+
+- Tagged with ``v1.4.0``.
+- Added support for JSON encoded environment values.
+- Added a ``CODE-OF-CONDUCT`` file for contributors.
+
 .. _releases-1.3.0:
 
 Version 1.3.0

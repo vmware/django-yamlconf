@@ -4,6 +4,12 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
+## 1.4.0 - 2020-12-18
+
+* Added support for JSON encoded environment values.
+
+* Added a `CODE-OF-CONDUCT` file for contributors.
+
 ## 1.3.0 - 2020-07-15
 
 * Dropped explicit dependency on Django for package.  Overall project
