@@ -15,7 +15,9 @@ Version 1.4.0
 - Tagged with ``v1.4.0``.
 - Added support for JSON encoded environment values if decorated with
   ``:jsonenv``.  If JSON decoding fails (invalid JSON string), the value
-  is used as is.
+  is used as is.  This allows the definition of more complex values via
+  the environment, list, dictionaries, etc.  This can be used in K8s
+  environments, e.g., Concourse
 - Added a ``CODE-OF-CONDUCT`` file for contributors.
 
 .. _releases-1.3.0:
