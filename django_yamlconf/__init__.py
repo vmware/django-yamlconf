@@ -19,7 +19,6 @@ import logging
 import multiprocessing
 import os
 import platform
-import stat
 import sys
 import textwrap
 import traceback
@@ -574,13 +573,13 @@ def load_envdefs(attributes, settings):
     for name, value in six.iteritems(os.environ):
         if name.startswith("YAMLCONF_"):
             attrname = name.replace("YAMLCONF_", "")
-            if attributes.get(attrname + ":json"):
+            if attributes.get(attrname + ":jsonenv"):
                 try:
                     value = json.loads(value)
-                except json.decoder.JSONDecodeError:
+                except json.decoder.JSONDecodeError as exc:
                     logger.error(
-                        'YAMLCONF: JSON decode of "%s" failed for "%s"',
-                        value, attrname
+                        'YAMLCONF: JSON decode of "%s" failed for "%s": %s',
+                        value, attrname, str(exc)
                     )
             set_attr_value(
                 attributes,

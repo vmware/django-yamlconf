@@ -4,9 +4,11 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
-## 1.4.0 - 2020-12-18
+## 1.4.0 - In progress
 
-* Added support for JSON encoded environment values.
+* Added support for JSON encoded environment values if decorated with
+  ":jsonenv".  If JSON decoding fails (invalid JSON string), the value
+  is used as is.
 
 * Added a `CODE-OF-CONDUCT` file for contributors.
 

@@ -13,6 +13,12 @@ distro:
 	. $(VENVDISTRO)/bin/activate && pip install six
 	. $(VENVDISTRO)/bin/activate && setup.py sdist
 
+publish:
+	if [ ! -d $(VENVDISTRO) ]; then python3 -m venv $(VENVDISTRO); fi
+	. $(VENVDISTRO)/bin/activate && pip install -U pip
+	. $(VENVDISTRO)/bin/activate && pip install six
+	. $(VENVDISTRO)/bin/activate && setup.py sdist upload
+
 documentation:
 	$(MAKE) -C docs html
 
