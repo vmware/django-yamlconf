@@ -568,20 +568,18 @@ These might be addressed if the need arises.
 ## Examples
 
 The examples are based on the `polls` example from the
-[Django Project](https://www.djangoproject.com/) web site.  There are two
-flavors of this example:
+[Django Project](https://www.djangoproject.com/) web site.  There is current
+only one flavors of this example:
 
-1. Under Django version 2.0 in the directory `examples/django-2.0`
-2. Under Django version 3.0 in the directory `examples/django-3.0`
+1. Under Django version 3.0 in the directory `examples/django-3.0`
 
-The `django-1.11` directory has been removed as it is end of life and
-GitHub is generating secuity issues on the old dependencies.
+The `django-1.11` and `django-2.0` directories have been removed as they are
+end of life and GitHub is generating secuity issues on the old dependencies.
 
 See the
 [Examples Directory on GitHub](https://github.com/vmware/django-yamlconf/tree/master/examples).
 
-The examples for both versions of Django behaviour similarly: there are
-`Makefile` targets to:
+The examples are driven by the `Makefile`: there are `Makefile` targets to:
 
 * `init` initialize a local SQLite database for the application (should
   be the first target executed, if experimenting.
