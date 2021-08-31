@@ -402,7 +402,7 @@ setting "XYZ", the environment can be used:
 
 Environment variable values are pulled into the settings as a simple string
 value.  For more complex values, the environment value can be interpreted
-as a JSON encode structure if a setting with the `:json` qualifier is True
+as a JSON encode structure if a setting with the `:jsonenv` qualifier is True
 for the setting.  E.g., in a Fabric base deployment system, the servers to
 deploy to can be defined in the base YAMLCONF file as
 
@@ -418,13 +418,13 @@ server.  This list can be defined via a local YAMLCONF file in the directory
 tree on the system where deployments are run.   A local file can, however, be
 awkward in some contexts, e.g., deploy occurs as a Concourse job, and an
 environment variable definition is easier.  In this case, the value can be
-a JSON encoded value and JSON decode enabled via the `:json` qualifier.  The
+a JSON encoded value and JSON decode enabled via the `:jsonenv` qualifier.  The
 base YAMLCONF file would now include the definitions
 
 ```yaml
     DEPLOY_SERVERS:
       - '{DEPLOY_USER}@localhost'
-    DEPLOY_SERVERS:json: True
+    DEPLOY_SERVERS:jsonenv: True
 ```
 
 and the list of servers to deploy to "injected" via an environment variable:
