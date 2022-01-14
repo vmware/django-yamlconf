@@ -21,7 +21,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '-g68%n2=!(_2=d7-p(5#gy7fi@c_+!p7h@teso^!c4#%y#(gf2'
+# GitHub security alerts trigger on the Django generated value,  replacing
+# with a value suggesting YAMLCONF files should be used to define the
+# "real" value.
+SECRET_KEY = 'YAMLCONF-Defined'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
