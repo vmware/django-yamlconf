@@ -4,6 +4,14 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
+## 1.5.0 - In progress
+
+* Migrated published docs to `.readthedocs.yaml` configuration file
+  v2.
+
+* Various updates to dependencies highlighted by dependabot (mostly
+  just noise in the examples directories).
+
 ## 1.4.0 - 2021-03-03
 
 * Added support for JSON encoded environment values if decorated with

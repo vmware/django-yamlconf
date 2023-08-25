@@ -8,11 +8,11 @@ coverage
 PyYAML
 nose
 six
-Sphinx
-sphinx_rtd_theme
 pycodestyle
 pyflakes
 pylint
 pylint-django
 twine
 tox
+
+-r docs/requirements.txt
