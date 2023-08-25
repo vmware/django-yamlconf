@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
+# Copyright © 2019-2023, VMware, Inc.  All rights reserved.
 #
 # Django YAMLCONF documentation build configuration file, created by
 # sphinx-quickstart on Thu Feb 28 09:41:15 2019.

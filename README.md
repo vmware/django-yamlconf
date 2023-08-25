@@ -620,4 +620,4 @@ refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
 Created and maintained by Michael Rohan <mrohan@vmware.com>
 
-Copyright © 2018-2019, VMware, Inc.  All rights reserved.
+Copyright © 2018-2023, VMware, Inc.  All rights reserved.

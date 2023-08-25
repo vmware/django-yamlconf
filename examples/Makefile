@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright © 2018-2021, VMware, Inc.  All rights reserved.
+# Copyright © 2018-2023, VMware, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 
 # Example Django application under 3.0

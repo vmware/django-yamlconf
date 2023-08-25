@@ -1,10 +1,10 @@
 <!--
 -*- coding: utf-8 -*-
-    Copyright © 2019, VMware, Inc.  All rights reserved.
+    Copyright © 2019-2023, VMware, Inc.  All rights reserved.
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
-## 1.5.0 - In progress
+## 1.5.0 - 2023-08-25
 
 * Migrated published docs to `.readthedocs.yaml` configuration file
   v2.
