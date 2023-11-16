@@ -2,7 +2,7 @@
 # Copyright © 2018-2023, VMware, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 
-Django==3.2.20
+Django==3.2.23
 django-extensions
 pycodestyle
 pyflakes
