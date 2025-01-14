@@ -2,7 +2,7 @@
 # Copyright © 2018-2023, VMware, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 
-Django==4.2.16
+Django==4.2.18
 Jinja2
 coverage
 PyYAML
