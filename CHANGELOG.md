@@ -4,7 +4,11 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
-## 1.5.0 - 2023-08-25
+## 1.5.0 - IN PROGRESS
+
+* Use `SafeLoader` to load YAML files.
+
+* Updates for Django 4 (use `path`, `re_path` instead of `url`).
 
 * Migrated published docs to `.readthedocs.yaml` configuration file
   v2.

@@ -21,12 +21,17 @@ def index(request):
     """
     Generate the main page listing the YAMLCONF definitions.
     """
-    title = 'YAMLCONF Attributes'
     logger.debug("Generating index page for YAMLCONF")
     return render(
         request,
         "yamlconf/index.html",
-        {'attrs': get_cached_attributes(), 'title': title}
+        {
+            'title': 'YAMLCONF Attributes',
+            'attrs': sorted([
+                (k, v)
+                for k, v in get_cached_attributes().items()
+            ]),
+        }
     )
 
 

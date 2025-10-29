@@ -11,11 +11,11 @@ for admin users.  The views are protected via
 If you have a special environment, you might need to adjust this.
 """
 
-from django.conf.urls import url
+from django.urls import path
 from django_yamlconf import views
 
 app_name = 'django_yamlconf'
 urlpatterns = [
-    url("^$", views.index, name='index'),
-    url("^(?P<name>.+)/$", views.attr_info, name='attr'),
+    path("", views.index, name='index'),
+    path("<path:name>/", views.attr_info, name='attr'),
 ]

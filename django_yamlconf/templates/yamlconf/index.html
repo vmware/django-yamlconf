@@ -15,7 +15,7 @@
 </tr>
 </thead>
 <tbody>
-{% for key, info in attrs.items|dictsort:"0.lower" %}
+{% for key, info in attrs %}
 <tr>
   <td valign="top">
     <a href="{% url 'django_yamlconf:attr' key %}">{{ key|escape }}</a>
