@@ -396,8 +396,8 @@ def get_loader(syntax):
     try:
         module = __import__(syntax)
         loader = module.load
-        if hasattr(module, "FullLoader"):
-            kwargs = {'Loader': getattr(module, "FullLoader")}
+        if hasattr(module, "SafeLoader"):
+            kwargs = {'Loader': getattr(module, "SafeLoader")}
     except ImportError as ex:
         logger.error('Unsupported YAMLCONF format "%s": %s', syntax, ex)
     except AttributeError as ex:
