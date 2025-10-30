@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-# Copyright © 2018, VMware, Inc.  All rights reserved.
+# Copyright © 2018-2025, Broadcom, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 
 # Utility Makefile to package, clean and test
@@ -10,29 +10,28 @@ ACTIVATE=. $(VENV)/bin/activate
 distro:
 	if [ ! -d $(VENVDISTRO) ]; then python3 -m venv $(VENVDISTRO); fi
 	. $(VENVDISTRO)/bin/activate && pip install -U pip
-	. $(VENVDISTRO)/bin/activate && pip install six
-	. $(VENVDISTRO)/bin/activate && setup.py sdist
+	. $(VENVDISTRO)/bin/activate && pip install build
+	. $(VENVDISTRO)/bin/activate && pip install twine
+	. $(VENVDISTRO)/bin/activate && python3 -m build
 
-publish:
+publish:	clean distro
 	if [ ! -d $(VENVDISTRO) ]; then python3 -m venv $(VENVDISTRO); fi
-	. $(VENVDISTRO)/bin/activate && pip install -U pip
-	. $(VENVDISTRO)/bin/activate && pip install six
-	. $(VENVDISTRO)/bin/activate && setup.py sdist upload
+	. $(VENVDISTRO)/bin/activate && python3 -m twine upload
 
 documentation:
 	$(MAKE) -C docs html
 
 check:	$(VENV)
-	$(ACTIVATE) && setup.py test
+	$(ACTIVATE) && pytest src
 
 coverage:	$(VENV)
-	$(ACTIVATE) && coverage run --source=django_yamlconf/ setup.py test
+	$(ACTIVATE) && coverage run --source=src/django_yamlconf/ pytest src
 	$(ACTIVATE) && coverage html
 
 style-check:	$(VENV)
-	$(ACTIVATE) && pycodestyle `find django_yamlconf -name '*.py'`
-	$(ACTIVATE) && find django_yamlconf -name '*.py' | xargs pyflakes
-	$(ACTIVATE) && find django_yamlconf -name '*.py' | grep -v tests | xargs pylint
+	$(ACTIVATE) && pycodestyle `find src -name '*.py'`
+	$(ACTIVATE) && find src -name '*.py' | xargs pyflakes
+	$(ACTIVATE) && find src -name '*.py' | grep -v tests | xargs pylint
 
 venv $(VENV):
 	python3 -m venv $(VENV)
@@ -40,8 +39,6 @@ venv $(VENV):
 	$(ACTIVATE) && pip install -r requirements.txt
 
 clean:
-	$(MAKE) -C docs $@
-	$(MAKE) -C examples $@
 	find django_yamlconf -name __pycache__ | xargs rm -rf
 	find django_yamlconf -name '*.pyc' | xargs rm -f
 	rm -rf django_yamlconf.egg-info
@@ -53,3 +50,5 @@ clean:
 	rm -rf .eggs
 	rm -rf build
 	rm -rf dist
+	$(MAKE) -C examples $@
+	$(MAKE) -C docs $@

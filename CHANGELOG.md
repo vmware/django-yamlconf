@@ -1,6 +1,6 @@
 <!--
 -*- coding: utf-8 -*-
-    Copyright © 2019-2023, VMware, Inc.  All rights reserved.
+    Copyright © 2019-2023, Broadcom, Inc.  All rights reserved.
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
@@ -13,8 +13,13 @@
 * Migrated published docs to `.readthedocs.yaml` configuration file
   v2.
 
+* Updated to pyproject.toml packaging and pytest testing.
+
 * Various updates to dependencies highlighted by dependabot (mostly
   just noise in the examples directories).
+
+* Dropped the `VERSION` file, the version information is defined in
+  the Python sources now.
 
 ## 1.4.0 - 2021-03-03
 

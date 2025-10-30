@@ -1,17 +1,17 @@
 # -*- coding: utf-8 -*-
-# Copyright © 2018-2023, VMware, Inc.  All rights reserved.
+# Copyright © 2018-2025, Broadcom, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 
 Django==4.2.25
 Jinja2
 coverage
 PyYAML
-nose
 six
 pycodestyle
 pyflakes
 pylint
 pylint-django
+pytest
 twine
 tox
 

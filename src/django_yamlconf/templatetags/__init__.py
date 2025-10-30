@@ -1,0 +1,3 @@
+# -*- coding: utf-8 -*-
+# Copyright © 2018-2025 Broadcom, Inc.  All rights reserved.
+# SPDX-License-Identifier: BSD-2-Clause
