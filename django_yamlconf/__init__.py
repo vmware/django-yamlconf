@@ -320,7 +320,7 @@ def explain(name, settings=None, stream=None):
     if attr_info['history']:
         stream.write("Eclipsed values:\n")
         for value, source in attr_info['history']:
-            stream.write("    \"{0}\" via \"{1}\"\n".format(value, source))
+            stream.write(f"    \"{value}\" via \"{source}\"\n")
 
 
 def get_attr_info(name, settings=None):
@@ -532,7 +532,7 @@ def load(syntax="yaml", settings=None, base_dir=None, project=None):
     settings_dir = get_settings_dir(settings)
     base_dir = base_dir or os.path.dirname(settings_dir)
     project = project or os.path.basename(settings_dir)
-    attr_filename = "{0}.{1}".format(project, syntax)
+    attr_filename = f"{project}.{syntax}"
     attributes = bootstrap_attributes(base_dir)
     for filename in dirtree_find(attr_filename, settings_dir):
         load_conffile(attributes, settings, loader, loader_kwargs, filename)
@@ -701,7 +701,7 @@ def sysfiles(create, noop, settings, rootdir="", render=None):
     if templates_dir:
         td_len = len(templates_dir)
         for root, _, files in os.walk(templates_dir):
-            dst_dir = "{0}{1}".format(rootdir, root[td_len:])
+            dst_dir = f"{rootdir}{root[td_len:]}"
             for name in files:
                 dst_path = os.path.join(dst_dir, name)
                 src_path = os.path.join(root, name)
@@ -721,11 +721,12 @@ def _load_version():
     """
     Return the version information defined in the VERSION file.
     """
-    with open(os.path.join(os.path.dirname(__file__), "VERSION"), "r") as ver:
+    filename = os.path.join(os.path.dirname(__file__), "VERSION")
+    with open(filename, "r", encoding="utf-8") as ver:
         v_info = ver.readline()
     major, minor, patch = filter(lambda x: x != '', v_info.strip().split(" "))
     return major, minor, patch
 
 
 V_MAJOR, V_MINOR, V_PATCH = _load_version()
-VERSION = "{0}.{1}.{2}".format(V_MAJOR, V_MINOR, V_PATCH)
+VERSION = f"{V_MAJOR}.{V_MINOR}.{V_PATCH}"

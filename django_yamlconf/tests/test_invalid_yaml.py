@@ -26,15 +26,21 @@ class TestInvalidYAML(YCTestCase):
         Verify message for an invalid YAML format
         """
         if hasattr(self, "assertLogs"):
-            with self.assertLogs('', level='ERROR') as logs:
-                django_yamlconf.load(project="invalid", settings=self.settings)
-                self.assertIn('Failed to load', logs.output[0])
+            with self.assertLogs("", level="ERROR") as logs:
+                django_yamlconf.load(
+                    project="invalid", settings=self.settings
+                )
+                self.assertIn("Failed to load", logs.output[0])
 
     def test_invalid_data(self):
         """
         Verify message for an invalid YAML data
         """
         if hasattr(self, "assertLogs"):
-            with self.assertLogs('', level='ERROR') as logs:
-                django_yamlconf.load(project="lists", settings=self.settings)
-                self.assertIn('did not define a dictionary', logs.output[0])
+            with self.assertLogs("", level="ERROR") as logs:
+                django_yamlconf.load(
+                    project="lists", settings=self.settings
+                )
+                self.assertIn(
+                    "did not define a dictionary", logs.output[0]
+                )

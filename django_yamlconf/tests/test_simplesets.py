@@ -21,7 +21,7 @@ class TestSimpleSets(YCTestCase):
         """
         self.settings = MockSettings()
         self.settings.DICT1 = {}
-        self.settings.DICT3 = {'v1': 'value1'}
+        self.settings.DICT3 = {"v1": "value1"}
         self.settings.LIST3 = [1, 2]
         self.settings.LIST4 = [1, 2]
         self.settings.LIST5 = [1, 2]
@@ -38,20 +38,20 @@ class TestSimpleSets(YCTestCase):
         """
         Set the DICT1[value] attribute to simple literal.
         """
-        self.assertEqual(self.settings.DICT1['value'], "abc")
+        self.assertEqual(self.settings.DICT1["value"], "abc")
 
     def test_set_dict_element3(self):
         """
         Set the DICT2[v1] attribute to simple literal.
         """
-        self.assertEqual(self.settings.DICT2['v1'], "value1")
+        self.assertEqual(self.settings.DICT2["v1"], "value1")
 
     def test_set_dict_element2(self):
         """
         Set the DICT3[v2] attribute to simple literal.
         """
-        self.assertEqual(self.settings.DICT3['v1'], "value1")
-        self.assertEqual(self.settings.DICT3['v2'], "value2")
+        self.assertEqual(self.settings.DICT3["v1"], "value1")
+        self.assertEqual(self.settings.DICT3["v2"], "value2")
 
     def test_set_list1(self):
         """

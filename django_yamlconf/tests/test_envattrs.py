@@ -22,25 +22,25 @@ class TestDefAttrs(YCTestCase):
         Initialize the mock settings object
         """
         self.settings = MockSettings()
-        os.environ['YAMLCONF_A'] = 'a'
-        os.environ['YAMLCONF_B'] = '{A}b'
+        os.environ["YAMLCONF_A"] = "a"
+        os.environ["YAMLCONF_B"] = "{A}b"
         django_yamlconf.load(project="testing", settings=self.settings)
 
     def tearDown(self):
         """
         Remove the environment variables
         """
-        del os.environ['YAMLCONF_A']
-        del os.environ['YAMLCONF_B']
+        del os.environ["YAMLCONF_A"]
+        del os.environ["YAMLCONF_B"]
 
     def test_env_a(self):
         """
         Value of A from environment
         """
-        self.assertEqual(self.settings.A, 'a')
+        self.assertEqual(self.settings.A, "a")
 
     def test_env_b(self):
         """
         Value of B from environment
         """
-        self.assertEqual(self.settings.B, 'ab')
+        self.assertEqual(self.settings.B, "ab")

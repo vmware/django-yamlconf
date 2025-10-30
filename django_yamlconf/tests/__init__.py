@@ -13,6 +13,7 @@ class YCTestCase(TestCase):
     """
     Custom TestCase to "inject" the common attributes used for testing.
     """
+
     BASE_DIR = os.path.dirname(os.path.dirname(__file__))
     TOP_DIR = os.path.dirname(BASE_DIR)
 

@@ -26,23 +26,25 @@ class TestInvalidLoader(YCTestCase):
         Verify error for non-existent loader/syntax
         """
         if hasattr(self, "assertLogs"):
-            with self.assertLogs('', level='ERROR') as logs:
+            with self.assertLogs("", level="ERROR") as logs:
                 django_yamlconf.load(
                     project="nosuchfmt",
                     settings=self.settings,
-                    syntax="nosuchfmt"
+                    syntax="nosuchfmt",
                 )
-                self.assertIn('Unsupported YAMLCONF format', logs.output[0])
+                self.assertIn(
+                    "Unsupported YAMLCONF format", logs.output[0]
+                )
 
     def test_no_loader(self):
         """
         Verify error for loader/syntax without load method
         """
         if hasattr(self, "assertLogs"):
-            with self.assertLogs('', level='ERROR') as logs:
+            with self.assertLogs("", level="ERROR") as logs:
                 django_yamlconf.load(
                     project="nosuchfmt",
                     settings=self.settings,
-                    syntax="os"
+                    syntax="os",
                 )
                 self.assertIn('has no "load"', logs.output[0])

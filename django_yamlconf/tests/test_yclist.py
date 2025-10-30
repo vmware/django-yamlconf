@@ -38,9 +38,11 @@ class TestYCList(YCTestCase):
         Explain when YAMLCONF not initialized
         """
         if hasattr(self, "assertLogs"):
-            with self.assertLogs('', level='ERROR') as logs:
+            with self.assertLogs("", level="ERROR") as logs:
                 django_yamlconf.list_attrs(
                     settings=MockSettings(),
                     stream=StringIO(),
                 )
-                self.assertIn('No YAMLCONF attributes defined', logs.output[0])
+                self.assertIn(
+                    "No YAMLCONF attributes defined", logs.output[0]
+                )

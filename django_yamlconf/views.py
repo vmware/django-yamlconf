@@ -27,10 +27,7 @@ def index(request):
         "yamlconf/index.html",
         {
             'title': 'YAMLCONF Attributes',
-            'attrs': sorted([
-                (k, v)
-                for k, v in get_cached_attributes().items()
-            ]),
+            'attrs': sorted(list(get_cached_attributes().items())),
         }
     )
 
@@ -40,7 +37,7 @@ def attr_info(request, name):
     """
     Display the page giving information on an individual attribute.
     """
-    title = 'YAMLCONF: "{0}" Attribute'.format(name)
+    title = f'YAMLCONF: "{name}" Attribute'
     logger.debug("Generating YAMLCONF info page for \"%s\"", name)
     info = get_attr_info(name)
     if info is None:

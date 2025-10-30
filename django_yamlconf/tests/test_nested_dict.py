@@ -22,9 +22,7 @@ class TestNestedDict(YCTestCase):
         settings = MockSettings()
         settings.X = {"Y": {"Z": 10}}
         django_yamlconf.add_attributes(
-            settings,
-            {'X.Y.Z': 20},
-            "**TESTING**"
+            settings, {"X.Y.Z": 20}, "**TESTING**"
         )
         self.assertEqual(settings.X["Y"]["Z"], 20)
 
@@ -35,8 +33,6 @@ class TestNestedDict(YCTestCase):
         settings = MockSettings()
         settings.X = {}
         django_yamlconf.add_attributes(
-            settings,
-            {'X.Y.Z': 20},
-            "**TESTING**"
+            settings, {"X.Y.Z": 20}, "**TESTING**"
         )
         self.assertEqual(settings.X["Y"]["Z"], 20)

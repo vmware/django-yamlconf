@@ -23,10 +23,8 @@ class TestNotDictSet(YCTestCase):
             settings = MockSettings()
             settings.X = "x"
             django_yamlconf.load(project="nosuchfile", settings=settings)
-            with self.assertLogs('', level='ERROR') as logs:
+            with self.assertLogs("", level="ERROR") as logs:
                 django_yamlconf.add_attributes(
-                    settings,
-                    {'X.not_there': 'a'},
-                    "**TESTING**"
+                    settings, {"X.not_there": "a"}, "**TESTING**"
                 )
-                self.assertIn('Not a dictionary', logs.output[0])
+                self.assertIn("Not a dictionary", logs.output[0])

@@ -27,10 +27,10 @@ class TestDefAttrs(YCTestCase):
         """
         Defined attributes should be {'A': 'a', 'B': 'ab', ...}
         """
-        self.assertEqual(self.defattrs['A'], 'a')
-        self.assertEqual(self.defattrs['B'], 'ab')
-        self.assertEqual(self.defattrs['C'], 'abc')
-        self.assertEqual(self.defattrs['D'], 'abcd')
+        self.assertEqual(self.defattrs["A"], "a")
+        self.assertEqual(self.defattrs["B"], "ab")
+        self.assertEqual(self.defattrs["C"], "abc")
+        self.assertEqual(self.defattrs["D"], "abcd")
 
     def test_defined_attrs_names(self):
         """
@@ -38,9 +38,23 @@ class TestDefAttrs(YCTestCase):
         """
         self.assertEqual(
             sorted(self.defattrs.keys()),
-            ['A', 'B', 'BASE_DIR', 'C', 'CPU_COUNT', 'D', 'OS_MACHINE',
-             'OS_NODE', 'OS_PROCESSOR', 'OS_RELEASE', 'OS_SYSTEM', 'PYTHON',
-             'TOP_DIR', 'USER', 'VIRTUAL_ENV']
+            [
+                "A",
+                "B",
+                "BASE_DIR",
+                "C",
+                "CPU_COUNT",
+                "D",
+                "OS_MACHINE",
+                "OS_NODE",
+                "OS_PROCESSOR",
+                "OS_RELEASE",
+                "OS_SYSTEM",
+                "PYTHON",
+                "TOP_DIR",
+                "USER",
+                "VIRTUAL_ENV",
+            ],
         )
 
     def test_no_defined_attrs(self):
@@ -48,7 +62,4 @@ class TestDefAttrs(YCTestCase):
         Expect empty set for no attributes
         """
         settings = MockSettings()
-        self.assertEqual(
-            django_yamlconf.defined_attributes(settings),
-            {}
-        )
+        self.assertEqual(django_yamlconf.defined_attributes(settings), {})

@@ -21,10 +21,10 @@ class TestEnvFile(YCTestCase):
         Initialize the mock settings object
         """
         self.settings = MockSettings()
-        self.settings.XMPL = 'Locally defined'
-        os.environ['YAMLCONF_CONFFILE'] = os.path.join(
+        self.settings.XMPL = "Locally defined"
+        os.environ["YAMLCONF_CONFFILE"] = os.path.join(
             os.path.dirname(__file__),
-            'env.yaml',
+            "env.yaml",
         )
         django_yamlconf.load(project="xmpl", settings=self.settings)
 

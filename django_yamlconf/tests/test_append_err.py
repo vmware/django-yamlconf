@@ -26,7 +26,9 @@ class TestAppendErr(YCTestCase):
         Should reject appending dict to list
         """
         if hasattr(self, "assertLogs"):
-            self.settings.DICT = {'a': 1, 'b': 2}
-            with self.assertLogs('', level='ERROR') as logs:
-                django_yamlconf.load(project="append", settings=self.settings)
-                self.assertIn('Cannot append', logs.output[0])
+            self.settings.DICT = {"a": 1, "b": 2}
+            with self.assertLogs("", level="ERROR") as logs:
+                django_yamlconf.load(
+                    project="append", settings=self.settings
+                )
+                self.assertIn("Cannot append", logs.output[0])

@@ -22,17 +22,17 @@ class TestJsonEnv(YCTestCase):
         Initialize the mock settings object
         """
         self.settings = MockSettings()
-        os.environ['YAMLCONF_A'] = '[1, 2]'
-        os.environ['YAMLCONF_B'] = '{"a": 1, "b": 2}'
-        os.environ['YAMLCONF_C'] = '[1, 2'
+        os.environ["YAMLCONF_A"] = "[1, 2]"
+        os.environ["YAMLCONF_B"] = '{"a": 1, "b": 2}'
+        os.environ["YAMLCONF_C"] = "[1, 2"
         django_yamlconf.load(project="jsonenv", settings=self.settings)
 
     def tearDown(self):
         """
         Remove the environment variables
         """
-        del os.environ['YAMLCONF_A']
-        del os.environ['YAMLCONF_B']
+        del os.environ["YAMLCONF_A"]
+        del os.environ["YAMLCONF_B"]
 
     def test_env_a(self):
         """
@@ -44,10 +44,10 @@ class TestJsonEnv(YCTestCase):
         """
         Value of B from environment
         """
-        self.assertEqual(self.settings.B['a'], 1)
+        self.assertEqual(self.settings.B["a"], 1)
 
     def test_env_c(self):
         """
         Value of C from environment: invalid JSON, it's a string!
         """
-        self.assertEqual(self.settings.C, '[1, 2')
+        self.assertEqual(self.settings.C, "[1, 2")

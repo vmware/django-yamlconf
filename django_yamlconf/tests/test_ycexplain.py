@@ -31,8 +31,7 @@ class TestYCExplain(YCTestCase):
         out = StringIO()
         django_yamlconf.explain("X", settings=self.settings, stream=out)
         self.assertIn(
-            'The setting "X" is not managed by YAMLCONF',
-            out.getvalue()
+            'The setting "X" is not managed by YAMLCONF', out.getvalue()
         )
 
     def test_ycexplain_a(self):
@@ -42,8 +41,7 @@ class TestYCExplain(YCTestCase):
         out = StringIO()
         django_yamlconf.explain("A", settings=self.settings, stream=out)
         self.assertIn(
-            'Example documentation for the attribute "A"',
-            out.getvalue()
+            'Example documentation for the attribute "A"', out.getvalue()
         )
 
     def test_ycexplain_b(self):
@@ -52,24 +50,20 @@ class TestYCExplain(YCTestCase):
         """
         out = StringIO()
         django_yamlconf.explain("B", settings=self.settings, stream=out)
-        self.assertIn(
-            '{A}',
-            out.getvalue()
-        )
-        self.assertIn(
-            'Value of A',
-            out.getvalue()
-        )
+        self.assertIn("{A}", out.getvalue())
+        self.assertIn("Value of A", out.getvalue())
 
     def test_ycexplain_not_managed(self):
         """
         Explain when YAMLCONF not initialized
         """
         if hasattr(self, "assertLogs"):
-            with self.assertLogs('', level='ERROR') as logs:
+            with self.assertLogs("", level="ERROR") as logs:
                 django_yamlconf.explain(
                     "X",
                     settings=MockSettings(),
                     stream=StringIO(),
                 )
-                self.assertIn('No YAMLCONF attributes defined', logs.output[0])
+                self.assertIn(
+                    "No YAMLCONF attributes defined", logs.output[0]
+                )

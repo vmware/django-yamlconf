@@ -32,10 +32,7 @@ class TestExpand(YCTestCase):
         """
         Expanded path including TOP_DIR: ETC_DIR
         """
-        self.assertEqual(
-            self.settings.ETC_DIR,
-            "{0}/etc".format(TestExpand.TOP_DIR)
-        )
+        self.assertEqual(self.settings.ETC_DIR, f"{TestExpand.TOP_DIR}/etc")
 
     def test_recurse_x(self):
         """
@@ -54,23 +51,25 @@ class TestExpand(YCTestCase):
         Test error message for invalid attr reference
         """
         if hasattr(self, "assertLogs"):
-            with self.assertLogs('', level='ERROR') as logs:
+            with self.assertLogs("", level="ERROR") as logs:
                 django_yamlconf.add_attributes(
                     self.settings,
                     {"X": "Reference to invalid {ATTR"},
                     "**TESTING**",
                 )
-                self.assertIn('Invalid format', "\n".join(logs.output))
+                self.assertIn("Invalid format", "\n".join(logs.output))
 
     def test_missing_key(self):
         """
         Test error message for invalid attr name
         """
         if hasattr(self, "assertLogs"):
-            with self.assertLogs('', level='ERROR') as logs:
+            with self.assertLogs("", level="ERROR") as logs:
                 django_yamlconf.add_attributes(
                     self.settings,
                     {"X": "Reference to undefined {NO_SUCH_ATTR}"},
                     "**TESTING**",
                 )
-                self.assertIn('Reference to undefined', "\n".join(logs.output))
+                self.assertIn(
+                    "Reference to undefined", "\n".join(logs.output)
+                )

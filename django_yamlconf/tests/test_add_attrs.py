@@ -24,8 +24,8 @@ class TestAddAttrs(YCTestCase):
         django_yamlconf.load(project="testing", settings=self.settings)
         django_yamlconf.add_attributes(
             self.settings,
-            {'A': 'a', 'B': '{A}b', 'ETC_DIR': '{TOP_DIR}/etc'},
-            "**TESTING**"
+            {"A": "a", "B": "{A}b", "ETC_DIR": "{TOP_DIR}/etc"},
+            "**TESTING**",
         )
 
     def test_a(self):
@@ -45,8 +45,7 @@ class TestAddAttrs(YCTestCase):
         Verify of ETC_DIR => {TOP_DIR}/etc
         """
         self.assertEqual(
-            self.settings.ETC_DIR,
-            "{0}/etc".format(TestAddAttrs.TOP_DIR)
+            self.settings.ETC_DIR, "{0}/etc".format(TestAddAttrs.TOP_DIR)
         )
 
     def test_x(self):
