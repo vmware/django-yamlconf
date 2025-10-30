@@ -1,7 +1,7 @@
 
 # django-yamlconf
 
-`django_yamlconf` is part of VMware's support of open source development
+`django_yamlconf` is part of Broadcom's support of open source development
 and community.
 
 Handle YAML based Django settings: load Django settings from YAML files
@@ -77,7 +77,7 @@ and username).  In this example, a random `pwgen` password is used:
 
 ```yaml
 DATABASES.default.PASSWORD: 'zibiemohjuD6foh0'
-DATABASES.default.HOST: 'myproject-db.eng.vmware.com'
+DATABASES.default.HOST: 'myproject-db.broadcom.com'
 ```
 
 See the `load` function for more information on other optional
@@ -299,7 +299,7 @@ can be used to extend the underlying definition, e.g., add another admin
 user, the following definition can be used:
 
 ```yaml
-    ADMINS:append: 'someuser@vmware.com'
+    ADMINS:append: 'someuser@broadcom.com'
 ```
 
 The value of `:prepend` or `:append` qualified attribute can be
@@ -308,8 +308,8 @@ given, the attribute is extend with the extra values, e.g.,:
 
 ```yaml
     ADMINS:append:
-      - 'someuser1@vmware.com'
-      - 'someuser2@vmware.com'
+      - 'someuser1@broadcom.com'
+      - 'someuser2@broadcom.com'
 ```
 
 Normally, list values in the settings file are simply unordered lists.  There
@@ -618,6 +618,6 @@ refer to [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ## Authors
 
-Created and maintained by Michael Rohan <mrohan@vmware.com>
+Created and maintained by Michael Rohan <michael.rohan@broadcom.com>
 
-Copyright © 2018-2023, VMware, Inc.  All rights reserved.
+Copyright © 2018-2025, Broadcom, Inc.  All rights reserved.

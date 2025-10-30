@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
-# Copyright © 2019-2023, VMware, Inc.  All rights reserved.
+# Copyright © 2019-2025, Broadcom, Inc.  All rights reserved.
 #
 # Django YAMLCONF documentation build configuration file, created by
 # sphinx-quickstart on Thu Feb 28 09:41:15 2019.
@@ -49,8 +49,8 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Django YAMLCONF'
-copyright = '2019, Michael Rohan <mrohan@vmware.com>'
-author = 'Michael Rohan <mrohan@vmware.com>'
+copyright = '2019, Michael Rohan <michael.rohan@broadcom.com>'
+author = 'Michael Rohan <michael.rohan@broadcom.com>'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -58,8 +58,11 @@ author = 'Michael Rohan <mrohan@vmware.com>'
 #
 # The short X.Y version.
 def get_version():
-    version_file = open('../django_yamlconf/VERSION')
-    return version_file.read().strip().replace(' ', '.')
+    with open('../src/django_yamlconf/__init__.py') as version_file:
+        for line in version_file.readlines():
+            if line.startswith("__version__"):
+                return line.strip().split(" ")[-1]
+    return "dev"
 
 version = get_version()
 # The full version, including alpha/beta/rc tags.
@@ -229,7 +232,7 @@ latex_elements = {
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
     (master_doc, 'DjangoYAMLCONF.tex', 'Django YAMLCONF Documentation',
-     'Michael Rohan \\textless{}mrohan@vmware.com\\textgreater{}', 'manual'),
+     'Michael Rohan \\textless{}michael.rohan@broadcom.com\\textgreater{}', 'manual'),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of

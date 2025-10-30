@@ -45,7 +45,7 @@ clean:
 	rm -rf django_yamlconf/root
 	rm -f .coverage
 	rm -rf htmlcov
-	rm -rf $(VENVDISTRO)
+	rm -rf $(VENVDISTRO) $(VENV)
 	rm -rf .venv?
 	rm -rf .eggs
 	rm -rf build

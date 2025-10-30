@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-   Copyright © 2019, VMware, Inc.  All rights reserved.
+   Copyright © 2019-2025, Broadcom, Inc.  All rights reserved.
    SPDX-License-Identifier: BSD-2-Clause
 
 .. _contributing:
@@ -21,4 +21,4 @@ open-source patch. For more detailed information, refer to
 Authors
 -------
 
-Created and maintained by Michael Rohan mrohan@vmware.com
+Created and maintained by Michael Rohan michael.rohan@broadcom.com

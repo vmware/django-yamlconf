@@ -1,11 +1,11 @@
 .. -*- coding: utf-8 -*-
-   Copyright © 2018-2019, VMware, Inc.  All rights reserved.
+   Copyright © 2018-2025, Broadcom, Inc.  All rights reserved.
    SPDX-License-Identifier: BSD-2-Clause
 
 django-yamlconf
 ===============
 
-``django_yamlconf`` is part of VMware's support of open source
+``django_yamlconf`` is part of Broadcom's support of open source
 development and community.
 
 Handle YAML based Django settings: load Django settings from YAML files
@@ -79,7 +79,7 @@ password is used:
 .. code:: yaml
 
     DATABASES.default.PASSWORD: 'zibiemohjuD6foh0'
-    DATABASES.default.HOST: 'myproject-db.eng.vmware.com'
+    DATABASES.default.HOST: 'myproject-db.broadcom.com'
 
 See the ``load`` function for more information on other optional
 arguments.

@@ -88,4 +88,4 @@ Initial public release
 
 ## 0.x - 2018-08-07
 
-Internal VMware releases
+Internal Broadcom releases

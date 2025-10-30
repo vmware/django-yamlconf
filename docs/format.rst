@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-   Copyright © 2019, VMware, Inc.  All rights reserved.
+   Copyright © 2019-2025, Broadcom, Inc.  All rights reserved.
    SPDX-License-Identifier: BSD-2-Clause
 
 .. _format:
@@ -89,7 +89,7 @@ user, the following definition can be used:
 
 .. code:: yaml
 
-        ADMINS:append: 'someuser@vmware.com'
+        ADMINS:append: 'someuser@broadcom.com'
 
 The value of ``:prepend`` or ``:append`` qualified attribute can be
 either a single value, as above, or a list of values. When a list is
@@ -98,8 +98,8 @@ given, the attribute is extend with the extra values, e.g.,:
 .. code:: yaml
 
         ADMINS:append:
-          - 'someuser1@vmware.com'
-          - 'someuser2@vmware.com'
+          - 'someuser1@broadcom.com'
+          - 'someuser2@broadcom.com'
 
 Normally, list values in the settings file are simply unordered lists.
 There are, however, some values where the order matters, in particular,

@@ -1,5 +1,5 @@
 .. -*- coding: utf-8 -*-
-   Copyright © 2019, VMware, Inc.  All rights reserved.
+   Copyright © 2019-2025, Broadcom, Inc.  All rights reserved.
    SPDX-License-Identifier: BSD-2-Clause
 
 .. _examples:
@@ -11,11 +11,10 @@ The examples are based on the ``polls`` example from the `Django
 Project <https://www.djangoproject.com/>`__ web site. There are two
 flavors of this example:
 
-1. Under Django version 2.0 in the directory ``examples/django-2.0``
-2. Under Django version 3.0 in the directory ``examples/django-3.0``
+1. Under Django version 4 in the directory ``examples/django-4``
 
-The ``django-1.11`` directory has been removed as it is end of life and
-GitHub is generating secuity issues on the old dependencies.
+The ``django-3.0`` directory and earlier have been removed as it is
+end of life and GitHub is generating secuity issues on the old dependencies.
 
 See the `Examples Directory on
 GitHub <https://github.com/vmware/django-yamlconf/tree/master/examples>`__.
