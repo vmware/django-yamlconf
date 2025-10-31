@@ -1,6 +1,6 @@
 <!--
 -*- coding: utf-8 -*-
-    Copyright © 2019-2023, Broadcom, Inc.  All rights reserved.
+    Copyright © 2019-2025, Broadcom, Inc.  All rights reserved.
     SPDX-License-Identifier: BSD-2-Clause
 -->
 

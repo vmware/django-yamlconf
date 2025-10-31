@@ -49,7 +49,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Django YAMLCONF'
-copyright = '2019, Michael Rohan <michael.rohan@broadcom.com>'
+copyright = '2019-2025, Michael Rohan <michael.rohan@broadcom.com>'
 author = 'Michael Rohan <michael.rohan@broadcom.com>'
 
 # The version info for the project you're documenting, acts as replacement for
