@@ -23,6 +23,8 @@ import sphinx_rtd_theme
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('../src'))
 
+from django_yamlconf import __version__ as version
+
 # -- General configuration ------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
@@ -52,19 +54,6 @@ project = 'Django YAMLCONF'
 copyright = '2019-2025, Michael Rohan <michael.rohan@broadcom.com>'
 author = 'Michael Rohan <michael.rohan@broadcom.com>'
 
-# The version info for the project you're documenting, acts as replacement for
-# |version| and |release|, also used in various other places throughout the
-# built documents.
-#
-# The short X.Y version.
-def get_version():
-    with open('../src/django_yamlconf/__init__.py') as version_file:
-        for line in version_file.readlines():
-            if line.startswith("__version__"):
-                return line.strip().split(" ")[-1]
-    return "dev"
-
-version = get_version()
 # The full version, including alpha/beta/rc tags.
 release = version
 
