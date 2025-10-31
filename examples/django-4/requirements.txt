@@ -9,4 +9,3 @@ pycodestyle
 pyflakes
 pylint
 PyYAML
-six

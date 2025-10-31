@@ -21,6 +21,8 @@
 * Dropped the `VERSION` file, the version information is defined in
   the Python sources now.
 
+* Dropped support for Python 2.
+
 ## 1.4.0 - 2021-03-03
 
 * Added support for JSON encoded environment values if decorated with

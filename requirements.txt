@@ -6,7 +6,6 @@ Django==4.2.25
 Jinja2
 coverage
 PyYAML
-six
 pycodestyle
 pyflakes
 pylint

@@ -18,8 +18,8 @@ publish:	clean distro
 	if [ ! -d $(VENVDISTRO) ]; then python3 -m venv $(VENVDISTRO); fi
 	. $(VENVDISTRO)/bin/activate && python3 -m twine upload
 
-documentation:
-	$(MAKE) -C docs html
+documentation:	$(VENV)
+	$(ACTIVATE) && $(MAKE) -C docs html
 
 check:	$(VENV)
 	$(ACTIVATE) && pytest src

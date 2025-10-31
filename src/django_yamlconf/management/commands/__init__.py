@@ -8,7 +8,6 @@ from __future__ import unicode_literals
 
 import importlib
 import logging
-import six
 
 from django.conf import settings
 from django.core.management.base import BaseCommand
@@ -72,7 +71,7 @@ def get_methods(methods):
                 func_name
             )
             method_attrs = func()
-            for key, value in six.iteritems(method_attrs):
+            for key, value in method_attrs.items():
                 result[key] = value
         except ValueError:
             logger.warning('"%s" does not name a packaged method', method)

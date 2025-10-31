@@ -22,7 +22,6 @@ import platform
 import sys
 import textwrap
 import traceback
-import six
 
 __all__ = [
     'add_attributes',
@@ -65,7 +64,7 @@ def add_attributes(settings, attributes, source):
 
     """
     cur_attributes = get_cached_attributes(settings)
-    for key, value in six.iteritems(attributes):
+    for key, value in attributes.items():
         set_attr_value(cur_attributes, settings, source, key, value)
     expand_attribute_refs(cur_attributes)
     inject_attr(cur_attributes, settings)
@@ -226,7 +225,7 @@ def expand_attribute_refs(attributes):
     values = expand_attr_helper(
         {key: attributes[key]['value'] for key in attributes.keys()}
     )
-    for key, value in six.iteritems(values):
+    for key, value in values.items():
         attributes[key]['evalue'] = value
 
 
@@ -259,7 +258,7 @@ def expand_attr_helper(value, name="root", wrt=None):
                 "{}[{}]".format(name, i),
                 wrt
             )
-    elif isinstance(value, six.string_types):
+    elif isinstance(value, str):
         n_expand = 0
         done = False
         while not done:
@@ -569,7 +568,7 @@ def load_conffile(attributes, settings, loader, loader_kwargs, filename):
             type(data)
         )
         return
-    for name, value in six.iteritems(data):
+    for name, value in data.items():
         set_attr_value(attributes, settings, filename, name, value)
 
 
@@ -577,7 +576,7 @@ def load_envdefs(attributes, settings):
     """
     Load YAMLCONF attribute definitions from the environment.
     """
-    for name, value in six.iteritems(os.environ):
+    for name, value in os.environ.items():
         if name.startswith("YAMLCONF_"):
             attrname = name.replace("YAMLCONF_", "")
             if attributes.get(attrname + ":jsonenv"):
