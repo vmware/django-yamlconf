@@ -141,7 +141,7 @@ class TestYCSysfiles(YCTestCase):
 
     def test_test5(self):
         """
-        Generation of files: creationg
+        Generation of files: creating
         """
         if hasattr(self, "assertLogs"):
             django_yamlconf.add_attributes(
@@ -193,6 +193,34 @@ class TestYCSysfiles(YCTestCase):
                 self.assertIn(
                     "No YAMLCONF_SYSFILES_DIR settings defined",
                     "\n".join(logs.output),
+                )
+
+    def test_test7(self):
+        """
+        Generation of files: execute bit set
+        """
+        if hasattr(self, "assertLogs"):
+            django_yamlconf.add_attributes(
+                self.settings,
+                {
+                    "YAMLCONF_SYSFILES_DIR": os.path.join(
+                        self.sysfiles_root, "test7"
+                    ),
+                },
+                "**TESTING**",
+            )
+            with self.assertLogs("", level="DEBUG") as logs:
+                rootdir = os.path.join(TestYCSysfiles.BASE_DIR, "root")
+                django_yamlconf.sysfiles(
+                    create=True,
+                    noop=False,
+                    settings=self.settings,
+                    rootdir=rootdir,
+                    render=self.render,
+                )
+                self.assertRegex(
+                    " ".join(logs.output),
+                    "Adding execute permssions"
                 )
 
     def render(self, source, attrs):

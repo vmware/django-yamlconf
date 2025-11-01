@@ -6,6 +6,7 @@
 VENV=.venv
 VENVDISTRO=.venv-distro
 ACTIVATE=. $(VENV)/bin/activate
+PYTEST=$(VENV)/bin/pytest
 
 distro:
 	if [ ! -d $(VENVDISTRO) ]; then python3 -m venv $(VENVDISTRO); fi
@@ -22,10 +23,10 @@ documentation:	$(VENV)
 	$(ACTIVATE) && $(MAKE) -C docs html
 
 check:	$(VENV)
-	$(ACTIVATE) && pytest src
+	$(ACTIVATE) && $(PYTEST) src
 
 coverage:	$(VENV)
-	$(ACTIVATE) && coverage run --source=src/django_yamlconf/ pytest src
+	$(ACTIVATE) && coverage run --source=src/django_yamlconf/ $(PYTEST) src
 	$(ACTIVATE) && coverage html
 
 style-check:	$(VENV)
