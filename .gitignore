@@ -10,6 +10,7 @@ dist
 htmlcov
 venv
 .coverage
+.tox
 .venv-distro
 .venv?
 .venv

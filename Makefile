@@ -25,6 +25,9 @@ documentation:	$(VENV)
 check:	$(VENV)
 	$(ACTIVATE) && $(PYTEST) src
 
+tox-check:	$(VENV)
+	$(ACTIVATE) && tox
+
 coverage:	$(VENV)
 	$(ACTIVATE) && coverage run --source=src/django_yamlconf/ $(PYTEST) src
 	$(ACTIVATE) && coverage html
@@ -49,6 +52,7 @@ clean:
 	rm -rf $(VENVDISTRO) $(VENV)
 	rm -rf .venv?
 	rm -rf .eggs
+	rm -rf .tox
 	rm -rf build
 	rm -rf dist
 	$(MAKE) -C examples $@
