@@ -5,7 +5,6 @@
 Test the "ycexplain" management command
 """
 
-import codecs
 import jinja2
 import os
 
@@ -228,6 +227,6 @@ class TestYCSysfiles(YCTestCase):
         Full Django not available during testing, using the JINJA2
         templating directly.
         """
-        with codecs.open(source, "r", "utf-8") as src:
+        with open(source, "r", encoding="utf-8") as src:
             template = jinja2.Template(src.read())
         return template.render(attrs)

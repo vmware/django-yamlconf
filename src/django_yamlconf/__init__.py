@@ -555,7 +555,7 @@ def load_conffile(attributes, settings, loader, loader_kwargs, filename):
     Load an individual YAML file.  The data loaded is merged into the
     current set of attributes via the "set_attr_value" routine.
     """
-    with codecs.open(filename, "r", encoding="utf-8") as defs:
+    with open(filename, "r", encoding="utf-8") as defs:
         try:
             data = loader(defs, **loader_kwargs)
         except Exception as ex:
@@ -672,9 +672,9 @@ def sf_init_file(create, noop, attrs, dst_filepath, src_filepath, render=None):
         dirpath = os.path.dirname(dst_filepath)
         if create and not os.path.isdir(dirpath):
             os.makedirs(dirpath)
-        with codecs.open(dst_filepath, "wb", "utf-8") as dest_file:
+        with open(dst_filepath, "wb") as dest_file:
             logger.info('Updating the system control file "%s"', dst_filepath)
-            dest_file.write(contents)
+            dest_file.write(bytes(contents, "utf-8"))
         if os.access(src_filepath, os.X_OK):
             logger.debug('Adding execute permssions to "%s"', dst_filepath)
             mode = os.stat(src_filepath).st_mode
