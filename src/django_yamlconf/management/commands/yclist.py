@@ -18,5 +18,5 @@ class Command(YCBaseCommand):
         Handle, i.e., execute, the command given the command line arguments
         "args" and "options".
         """
-        super(Command, self).handle(*args, **options)
+        super().handle(*args, **options)
         list_attrs(stream=self.stdout)

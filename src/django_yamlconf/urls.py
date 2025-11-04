@@ -14,6 +14,7 @@ If you have a special environment, you might need to adjust this.
 from django.urls import path
 from django_yamlconf import views
 
+# pylint: disable=invalid-name
 app_name = 'django_yamlconf'
 urlpatterns = [
     path("", views.index, name='index'),

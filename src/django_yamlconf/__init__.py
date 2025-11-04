@@ -11,7 +11,6 @@ information.
 """
 from __future__ import unicode_literals
 
-import codecs
 import copy
 import getpass
 import json
@@ -137,7 +136,7 @@ def bootstrap_attributes(base_dir):
 
     for name in ['machine', 'node', 'processor', 'release', 'system']:
         method = getattr(platform, name)
-        add_attr_info(result, 'OS_{0}'.format(name.upper()), method())
+        add_attr_info(result, f'OS_{name.upper()}', method())
 
     add_attr_info(result, 'PYTHON', {
         'MAJOR': sys.version_info.major,
@@ -150,6 +149,7 @@ def bootstrap_attributes(base_dir):
     return result
 
 
+# pylint: disable=unused-argument
 def defined_attributes(settings=None, template_use=False):
     """
     Return a dictionary giving attribute names and associated values.
@@ -173,7 +173,7 @@ def defined_attributes(settings=None, template_use=False):
     result = {key: attributes[key]['evalue'] for key in attributes.keys()}
     # We are updating the result, avoid RunTimeError by creating a
     # temporary list for the set of keys in the iteration here
-    for key in [k for k in result.keys()]:
+    for key in list(result.keys()):
         if '.' in key:
             base_key = key.split('.')[0]
             if base_key not in result:
@@ -245,17 +245,17 @@ def expand_attr_helper(value, name="root", wrt=None):
     wrt = wrt or value
     if isinstance(value, dict):
         for key in value.keys():
-            if not value.get("{0}{1}".format(key, _RAW_MARKER), False):
+            if not value.get(f"{key}{_RAW_MARKER}", False):
                 value[key] = expand_attr_helper(
                     value[key],
-                    "{}[{}]".format(name, key),
+                    f"{name}[{key}]",
                     wrt
                 )
     elif isinstance(value, list):
         for i, _ in enumerate(value):
             value[i] = expand_attr_helper(
                 value[i],
-                "{}[{}]".format(name, i),
+                f"{name}[{i}]",
                 wrt
             )
     elif isinstance(value, str):
@@ -264,7 +264,7 @@ def expand_attr_helper(value, name="root", wrt=None):
         while not done:
             try:
                 new_value = value.format(**wrt)
-                done = (new_value == value)
+                done = new_value == value
                 value = new_value
             except ValueError:
                 logger.error('Invalid format value "%s" for "%s"', value, name)
@@ -296,22 +296,14 @@ def explain(name, settings=None, stream=None):
     stream = stream or sys.stdout
     attr_info = get_attr_info(name, settings=settings)
     if attr_info is None:
-        stream.write("The setting \"{0}\" is not managed by YAMLCONF\n".format(
-            name
-        ))
+        stream.write(f"The setting \"{name}\" is not managed by YAMLCONF\n")
         return
     stream.write("---------------------------\n")
-    stream.write("{0} = \"{1}\" (via \"{2}\")\n".format(
-        name,
-        attr_info['value'],
-        attr_info['source']
-    ))
+    stream.write(
+        f"{name} = \"{attr_info['value']}\" (via \"{attr_info['source']}\")\n"
+    )
     if attr_info['value'] != attr_info['evalue']:
-        stream.write("{0:{1}} = \"{2}\"\n".format(
-            "",
-            len(name),
-            attr_info['evalue']
-        ))
+        stream.write(f"{'':{len(name)}} = \"{attr_info['evalue']}\"\n")
     stream.write("\n")
     documentation = attr_info['doc']
     if documentation:
@@ -382,6 +374,7 @@ def get_cached_attributes(settings=None):
     This routine is used to support the management commands for YAMLCONF.
     """
     if settings is None:
+        # pylint: disable=import-outside-toplevel
         from django.conf import settings
     if not hasattr(settings, _YAMLCONF_ATTRIBUTES):
         logger.error("No YAMLCONF attributes defined")
@@ -422,10 +415,11 @@ def get_settings():
     name.  Simply return "appname.settings" from the loaded modules in
     "sys.modules".
     """
+    app_name = os.path.basename(os.path.dirname(
+        traceback.extract_stack(limit=3)[0][0]
+    ))
     return sys.modules[
-        "{0}.settings".format(os.path.basename(os.path.dirname(
-            traceback.extract_stack(limit=3)[0][0]
-        )))
+        f"{app_name}.settings"
     ]
 
 
@@ -500,11 +494,7 @@ def list_attrs(settings=None, stream=None):
     for name in attributes.keys():
         keylen = max(keylen, len(name))
     for name in sorted(attributes.keys()):
-        stream.write("{0:<{1}}   {2}\n".format(
-            name,
-            keylen,
-            attributes[name]['value']
-        ))
+        stream.write(f"{name:<{keylen}}   {attributes[name]['value']}\n")
     stream.write(
         "\nUse \"ycexplain\" for more information on individual attributes\n"
     )
@@ -558,7 +548,7 @@ def load_conffile(attributes, settings, loader, loader_kwargs, filename):
     with open(filename, "r", encoding="utf-8") as defs:
         try:
             data = loader(defs, **loader_kwargs)
-        except Exception as ex:
+        except Exception as ex:  # pylint: disable=broad-exception-caught
             logger.error('Failed to load "%s": %s', filename, ex)
             return
     if not isinstance(data, dict):
@@ -647,12 +637,14 @@ def set_attr_value(attributes, settings, filename, name, value):
         attr_data['value'] = value
 
 
+# pylint: disable=too-many-positional-arguments,too-many-arguments
 def sf_init_file(create, noop, attrs, dst_filepath, src_filepath, render=None):
     """
     Initialize a system file based on a template under the "sys"
     template directory.
     """
     if not render:
+        # pylint: disable=import-outside-toplevel
         from django.template.loader import render_to_string
         render = render_to_string
     logger.debug(

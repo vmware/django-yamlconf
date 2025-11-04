@@ -19,7 +19,7 @@ class Command(YCBaseCommand):
         """
         Add the command line options for "ycexplain"
         """
-        super(Command, self).add_arguments(parser)
+        super().add_arguments(parser)
         parser.add_argument(
             'attribute',
             nargs="+",
@@ -31,6 +31,6 @@ class Command(YCBaseCommand):
         Handle, i.e., execute, the command given the command line arguments
         "args" and "options".
         """
-        super(Command, self).handle(*args, **options)
+        super().handle(*args, **options)
         for name in options['attribute']:
             explain(name, stream=self.stdout)

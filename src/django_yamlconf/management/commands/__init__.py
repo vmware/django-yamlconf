@@ -94,7 +94,7 @@ class YCBaseCommand(BaseCommand):
     """
 
     def __init__(self, *args, **kwargs):
-        super(YCBaseCommand, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.verbosity = 1
 
     def add_arguments(self, parser):

@@ -34,7 +34,7 @@ class Command(YCBaseCommand):
     help = __doc__
 
     def __init__(self, *args, **kwargs):
-        super(Command, self).__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         self.root = None
         self.create = None
 
@@ -42,7 +42,7 @@ class Command(YCBaseCommand):
         """
         Add command line options.
         """
-        super(Command, self).add_arguments(parser)
+        super().add_arguments(parser)
         parser.add_argument(
             '--root', "-R",
             dest='root',
@@ -70,5 +70,5 @@ class Command(YCBaseCommand):
         and use "render_to_string" using the YAMLCONF attributes to create
         the contents for the system control file.
         """
-        super(Command, self).handle(*args, **options)
+        super().handle(*args, **options)
         sysfiles(options['create'], options['noop'], settings, options['root'])
