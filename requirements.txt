@@ -2,7 +2,7 @@
 # Copyright © 2018-2025, Broadcom, Inc.  All rights reserved.
 # SPDX-License-Identifier: BSD-2-Clause
 
-Django==4.2.25
+Django==4.2.26
 Jinja2
 coverage
 PyYAML
