@@ -1,5 +1,4 @@
 examples/django-4/mysite/sysfiles.txt
-src/django_yamlconf/root
 docs/_build
 static-files
 __pycache__
@@ -8,6 +7,7 @@ mysite.log
 build
 dist
 htmlcov
+root
 venv
 .coverage
 .tox

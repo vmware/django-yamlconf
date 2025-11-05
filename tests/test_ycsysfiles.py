@@ -9,8 +9,8 @@ import jinja2
 import os
 
 import django_yamlconf
-from django_yamlconf.tests import MockSettings
-from django_yamlconf.tests import YCTestCase
+from tests import MockSettings
+from tests import YCTestCase
 
 
 class TestYCSysfiles(YCTestCase):

@@ -6,8 +6,8 @@ Test appending incompatiable types
 """
 
 import django_yamlconf
-from django_yamlconf.tests import MockSettings
-from django_yamlconf.tests import YCTestCase
+from tests import MockSettings
+from tests import YCTestCase
 
 
 class TestAppendErr(YCTestCase):

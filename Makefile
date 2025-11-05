@@ -24,19 +24,19 @@ documentation:	$(VENV)
 	$(ACTIVATE) && $(MAKE) -C docs html
 
 check:	$(VENV)
-	$(ACTIVATE) && $(PYTEST) src
+	$(ACTIVATE) && PYTHONPATH=.:src $(PYTEST) tests
 
 tox-check:	$(VENV)
 	$(ACTIVATE) && tox
 
 coverage:	$(VENV)
-	$(ACTIVATE) && coverage run --source=src/django_yamlconf/ $(PYTEST) src
+	$(ACTIVATE) && PYTHONPATH=.:src coverage run --source=src/django_yamlconf/ $(PYTEST) tests
 	$(ACTIVATE) && coverage html
 
 style-check:	$(VENV)
-	$(ACTIVATE) && pycodestyle `find src -name '*.py'`
-	$(ACTIVATE) && find src -name '*.py' | xargs pyflakes
-	$(ACTIVATE) && find src -name '*.py' | grep -v tests | xargs pylint
+	$(ACTIVATE) && pycodestyle `find src tests -name '*.py'`
+	$(ACTIVATE) && find src tests -name '*.py' | xargs pyflakes
+	$(ACTIVATE) && find src -name '*.py' | xargs pylint
 
 venv $(VENV):
 	$(PYTHON) -m venv $(VENV)

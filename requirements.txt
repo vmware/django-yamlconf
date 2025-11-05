@@ -11,6 +11,7 @@ pyflakes
 pylint
 pylint-django
 pytest
+pytest-django
 twine
 tox
 

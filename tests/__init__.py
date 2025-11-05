@@ -6,7 +6,7 @@ Base definitions to support testing.
 """
 
 import os
-from unittest import TestCase
+from django.test import TestCase
 
 
 class YCTestCase(TestCase):
