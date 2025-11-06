@@ -24,6 +24,8 @@
 * Use the readthedocs link for YAMLCONF reference on the built-in page
   normally available at "/yamlconf".
 
+* Restructured and expanded testing.
+
 * Dropped support for Python 2.
 
 ## 1.4.0 - 2021-03-03

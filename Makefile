@@ -17,7 +17,6 @@ distro:
 	. $(VENVDISTRO)/bin/activate && $(PYTHON) -m build
 
 publish:	clean distro
-	if [ ! -d $(VENVDISTRO) ]; then $(PYTHON) -m venv $(VENVDISTRO); fi
 	. $(VENVDISTRO)/bin/activate && $(PYTHON) -m twine upload
 
 documentation:	$(VENV)
