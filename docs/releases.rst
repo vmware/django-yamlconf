@@ -7,6 +7,27 @@
 Releases & Major Branches
 -------------------------
 
+.. _releases-1.5.0:
+
+Version 1.5.0
+~~~~~~~~~~~~~
+
+- Tagged with ``v1.5.0``.
+- Dropped support for Python 2.
+- Use ``SafeLoader`` to load YAML files.
+- Updates for Django 4 (use ``path``, ``re_path`` instead of ``url``).
+- Dropped the ``VERSION`` file, the version information is defined in
+  the Python sources now.
+- Tested against Django 3, 4 and 5 with various Python versions.
+- Updated to ``pyproject.toml`` packaging and ``pytest`` testing.
+- Restructured and expanded testing.
+- Use the readthedocs link for YAMLCONF reference on the built-in page
+  normally available at "/yamlconf".
+- Various updates to dependencies highlighted by dependabot (mostly
+  just noise in the examples directories).
+- Migrated published docs to ``.readthedocs.yaml`` configuration file
+  v2.
+
 .. _releases-1.4.0:
 
 Version 1.4.0

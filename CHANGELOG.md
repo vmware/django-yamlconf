@@ -4,7 +4,7 @@
     SPDX-License-Identifier: BSD-2-Clause
 -->
 
-## 1.5.0 - IN PROGRESS
+## 1.5.0 - 2025-11-12
 
 * Use `SafeLoader` to load YAML files.
 
