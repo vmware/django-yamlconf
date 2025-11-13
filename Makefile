@@ -44,8 +44,7 @@ venv $(VENV):
 
 clean:
 	-$(ACTIVATE) && $(MAKE) -C docs $@
-	find src -name __pycache__ | xargs rm -rf
-	find src -name '*.pyc' | xargs rm -f
+	find src tests -name __pycache__ | xargs rm -rf
 	rm -rf django_yamlconf.egg-info
 	rm -rf django_yamlconf/root
 	rm -f .coverage
@@ -56,4 +55,5 @@ clean:
 	rm -rf .tox
 	rm -rf build
 	rm -rf dist
+	rm -rf root
 	$(MAKE) -C examples $@
