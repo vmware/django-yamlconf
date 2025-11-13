@@ -17,7 +17,7 @@ distro:
 	. $(VENVDISTRO)/bin/activate && $(PYTHON) -m build
 
 publish:	clean distro
-	. $(VENVDISTRO)/bin/activate && $(PYTHON) -m twine upload
+	. $(VENVDISTRO)/bin/activate && $(PYTHON) -m twine upload $(wildcard dist/*.whl)
 
 documentation:	$(VENV)
 	$(ACTIVATE) && $(MAKE) -C docs html
