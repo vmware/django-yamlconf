@@ -43,6 +43,7 @@ venv $(VENV):
 	$(ACTIVATE) && pip install -r requirements.txt
 
 clean:
+	-$(ACTIVATE) && $(MAKE) -C docs $@
 	find src -name __pycache__ | xargs rm -rf
 	find src -name '*.pyc' | xargs rm -f
 	rm -rf django_yamlconf.egg-info
@@ -56,4 +57,3 @@ clean:
 	rm -rf build
 	rm -rf dist
 	$(MAKE) -C examples $@
-	$(MAKE) -C docs $@
